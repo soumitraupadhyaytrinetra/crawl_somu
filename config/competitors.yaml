@@ -1,0 +1,155 @@
+competitors:
+  # AI Try-On Platforms — Global
+  - name: vue_ai
+    display_name: "Vue.ai"
+    url: "https://vue.ai"
+    region: global
+    type: platform
+    scrape_paths:
+      - /
+      - /platform
+      - /pricing
+
+  - name: zakeke
+    display_name: "Zakeke"
+    url: "https://www.zakeke.com"
+    region: global
+    type: platform
+    scrape_paths:
+      - /
+      - /pricing
+
+  - name: fit_match
+    display_name: "Fit:Match"
+    url: "https://www.fitmatch.ai"
+    region: global
+    type: platform
+    scrape_paths:
+      - /
+
+  - name: sizer_me
+    display_name: "Sizer.me"
+    url: "https://sizer.me"
+    region: global
+    type: platform
+    scrape_paths:
+      - /
+
+  - name: threedlook
+    display_name: "3DLOOK"
+    url: "https://3dlook.ai"
+    region: global
+    type: platform
+    scrape_paths:
+      - /
+      - /pricing
+
+  # Fashion Retailers — India
+  - name: myntra
+    display_name: "Myntra"
+    url: "https://www.myntra.com"
+    region: india
+    type: retailer
+    scrape_paths:
+      - /
+      - /men
+      - /women
+
+  - name: nykaa_fashion
+    display_name: "Nykaa Fashion"
+    url: "https://www.nykaafashion.com"
+    region: india
+    type: retailer
+    scrape_paths:
+      - /
+      - /women
+      - /men
+
+  - name: ajio
+    display_name: "Ajio"
+    url: "https://www.ajio.com"
+    region: india
+    type: retailer
+    scrape_paths:
+      - /
+      - /s/men
+      - /s/women
+
+  - name: flipkart_fashion
+    display_name: "Flipkart Fashion"
+    url: "https://www.flipkart.com"
+    region: india
+    type: retailer
+    scrape_paths:
+      - /clothing-and-accessories
+
+  - name: meesho
+    display_name: "Meesho"
+    url: "https://meesho.com"
+    region: india
+    type: retailer
+    scrape_paths:
+      - /
+
+  - name: tata_cliq
+    display_name: "Tata Cliq"
+    url: "https://www.tatacliq.com"
+    region: india
+    type: retailer
+    scrape_paths:
+      - /
+      - /men
+      - /women
+
+  # Fashion Retailers — UAE/Dubai
+  - name: noon_fashion
+    display_name: "Noon Fashion"
+    url: "https://www.noon.com"
+    region: uae
+    type: retailer
+    scrape_paths:
+      - /uae-en/fashion
+
+  - name: namshi
+    display_name: "Namshi"
+    url: "https://en-ae.namshi.com"
+    region: uae
+    type: retailer
+    scrape_paths:
+      - /
+      - /men
+      - /women
+
+  - name: ounass
+    display_name: "Ounass"
+    url: "https://www.ounass.ae"
+    region: uae
+    type: retailer
+    scrape_paths:
+      - /
+      - /women
+      - /men
+
+  - name: level_shoes
+    display_name: "Level Shoes"
+    url: "https://www.levelshoes.com"
+    region: uae
+    type: retailer
+    scrape_paths:
+      - /
+
+  - name: sixth_street
+    display_name: "6thStreet"
+    url: "https://en-ae.6thstreet.com"
+    region: uae
+    type: retailer
+    scrape_paths:
+      - /
+
+  - name: max_fashion
+    display_name: "Max Fashion UAE"
+    url: "https://www.maxfashion.com"
+    region: uae
+    type: retailer
+    scrape_paths:
+      - /ae
