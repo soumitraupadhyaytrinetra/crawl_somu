@@ -2,10 +2,17 @@ import argparse
 import asyncio
 import logging
 import os
+import sys
 import yaml
 from dotenv import load_dotenv
 
 load_dotenv()
+
+# Ensure UTF-8 I/O on Windows so crawl4ai can handle non-ASCII characters
+if sys.stdout.encoding and sys.stdout.encoding.lower() not in ("utf-8", "utf8"):
+    import io
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
 
 logging.basicConfig(
     level=os.getenv("LOG_LEVEL", "INFO"),
