@@ -36,8 +36,11 @@ def start_scheduler():
     scheduler.start()
     logger.info("Scheduler started. Cron: %s", schedule_expr)
 
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
     try:
-        asyncio.get_event_loop().run_forever()
+        loop.run_forever()
     except (KeyboardInterrupt, SystemExit):
         scheduler.shutdown()
+        loop.close()
         logger.info("Scheduler stopped.")
