@@ -8,6 +8,7 @@ from scrapers.base_scraper import (
     detect_virtual_tryon,
     extract_tech_hints,
 )
+from scrapers.llm_extractor import extract_with_llm
 from scrapers.models import CompetitorData, SampleProduct
 
 logger = logging.getLogger(__name__)
@@ -47,13 +48,38 @@ class RetailerScraper(BaseScraper):
             logger.error("No content scraped for retailer %s", name)
             return None
 
-        categories = _extract_categories(combined_text)
-        sample_products = _extract_products(combined_text, max_items=20)
-        has_tryon = detect_virtual_tryon(combined_text)
-        tech_hints = extract_tech_hints(combined_text)
-        tagline = _extract_tagline(combined_text)
-        tryon_desc = _extract_tryon_sentence(combined_text)
+        extracted = await extract_with_llm(combined_text, "retailer")
 
+        if extracted:
+            logger.info("LLM extraction succeeded for %s", name)
+            raw_products = extracted.get("sample_products") or []
+            sample_products = [
+                SampleProduct(
+                    name=p.get("name", ""),
+                    price=float(p["price"]) if p.get("price") is not None else None,
+                    currency=p.get("currency"),
+                )
+                for p in raw_products
+                if isinstance(p, dict) and p.get("name")
+            ]
+            return CompetitorData(
+                name=name,
+                display_name=competitor.get("display_name", name),
+                url=base_url,
+                region=competitor["region"],
+                type="retailer",
+                scraped_at=datetime.utcnow(),
+                tagline=extracted.get("tagline"),
+                about=extracted.get("about"),
+                has_virtual_tryon=bool(extracted.get("has_virtual_tryon", False)),
+                tryon_description=extracted.get("tryon_description"),
+                tech_hints=extracted.get("tech_hints") or [],
+                categories=extracted.get("categories") or [],
+                sample_products=sample_products,
+            )
+
+        # Fallback: regex extraction
+        logger.warning("LLM extraction failed for %s — using regex fallback", name)
         return CompetitorData(
             name=name,
             display_name=competitor.get("display_name", name),
@@ -61,12 +87,12 @@ class RetailerScraper(BaseScraper):
             region=competitor["region"],
             type="retailer",
             scraped_at=datetime.utcnow(),
-            tagline=tagline,
-            has_virtual_tryon=has_tryon,
-            tryon_description=tryon_desc,
-            tech_hints=tech_hints,
-            categories=categories,
-            sample_products=sample_products,
+            tagline=_extract_tagline(combined_text),
+            has_virtual_tryon=detect_virtual_tryon(combined_text),
+            tryon_description=_extract_tryon_sentence(combined_text),
+            tech_hints=extract_tech_hints(combined_text),
+            categories=_extract_categories(combined_text),
+            sample_products=_extract_products(combined_text, max_items=20),
         )
 
 
@@ -87,13 +113,7 @@ def _extract_products(text: str, max_items: int = 20) -> list[SampleProduct]:
             currency = CURRENCY_SYMBOLS.get(symbol, symbol)
             name = _find_nearby_product_name(lines, i)
             if name:
-                products.append(
-                    SampleProduct(
-                        name=name,
-                        price=float(price_str),
-                        currency=currency,
-                    )
-                )
+                products.append(SampleProduct(name=name, price=float(price_str), currency=currency))
         if len(products) >= max_items:
             break
     return products
@@ -112,7 +132,7 @@ def _find_nearby_product_name(lines: list[str], price_line_idx: int) -> str | No
 def _extract_tagline(text: str) -> str | None:
     for line in text.splitlines():
         stripped = line.strip().lstrip("#").strip()
-        if 10 < len(stripped) < 120:
+        if 10 < len(stripped) < 120 and not stripped.startswith("![]") and not stripped.startswith("["):
             return stripped
     return None
 
