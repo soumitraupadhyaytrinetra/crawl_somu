@@ -17,12 +17,17 @@ class Exporter:
         rows = await self.db.fetch_all()
         filename = f"competitors_{date.today().isoformat()}.csv"
         path = os.path.join(self.output_dir, filename)
-        if not rows:
-            return path
+        fieldnames = [
+            "id", "name", "display_name", "url", "region", "type",
+            "scraped_at", "scraped_date", "tagline", "about", "pricing_plans",
+            "has_virtual_tryon", "tryon_description", "tech_hints",
+            "categories", "sample_products",
+        ]
         with open(path, "w", newline="", encoding="utf-8") as f:
-            writer = csv.DictWriter(f, fieldnames=rows[0].keys())
+            writer = csv.DictWriter(f, fieldnames=fieldnames)
             writer.writeheader()
-            writer.writerows(rows)
+            if rows:
+                writer.writerows(rows)
         return path
 
     async def export_json(self) -> str:

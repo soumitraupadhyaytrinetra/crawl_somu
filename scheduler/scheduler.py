@@ -31,16 +31,17 @@ def start_scheduler():
         day_of_week=day_of_week,
     )
 
-    scheduler = AsyncIOScheduler()
-    scheduler.add_job(run_scrape_pipeline, trigger=trigger, id="competitor_scrape")
-    scheduler.start()
-    logger.info("Scheduler started. Cron: %s", schedule_expr)
+    async def _run():
+        scheduler = AsyncIOScheduler()
+        scheduler.add_job(run_scrape_pipeline, trigger=trigger, id="competitor_scrape")
+        scheduler.start()
+        logger.info("Scheduler started. Cron: %s", schedule_expr)
+        try:
+            await asyncio.Event().wait()
+        except (KeyboardInterrupt, SystemExit):
+            pass
+        finally:
+            scheduler.shutdown()
+            logger.info("Scheduler stopped.")
 
-    loop = asyncio.new_event_loop()
-    asyncio.set_event_loop(loop)
-    try:
-        loop.run_forever()
-    except (KeyboardInterrupt, SystemExit):
-        scheduler.shutdown()
-        loop.close()
-        logger.info("Scheduler stopped.")
+    asyncio.run(_run())

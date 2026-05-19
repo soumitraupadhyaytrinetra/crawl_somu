@@ -1,5 +1,6 @@
 import argparse
 import asyncio
+import io
 import logging
 import os
 import sys
@@ -8,10 +9,10 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# Ensure UTF-8 I/O on Windows so crawl4ai can handle non-ASCII characters
-if sys.stdout.encoding and sys.stdout.encoding.lower() not in ("utf-8", "utf8"):
-    import io
+# UTF-8 fix for Windows (must be before logging.basicConfig)
+if hasattr(sys.stdout, "buffer") and sys.stdout.encoding and sys.stdout.encoding.lower() not in ("utf-8", "utf8"):
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+if hasattr(sys.stderr, "buffer") and sys.stderr.encoding and sys.stderr.encoding.lower() not in ("utf-8", "utf8"):
     sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
 
 logging.basicConfig(
@@ -21,8 +22,13 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-def load_competitors(config_path: str = "config/competitors.yaml") -> list[dict]:
-    with open(config_path) as f:
+from pathlib import Path
+
+_PROJECT_ROOT = Path(__file__).parent
+
+def load_competitors(config_path: str = None) -> list[dict]:
+    path = Path(config_path) if config_path else _PROJECT_ROOT / "config" / "competitors.yaml"
+    with open(path) as f:
         data = yaml.safe_load(f)
     return data.get("competitors", [])
 

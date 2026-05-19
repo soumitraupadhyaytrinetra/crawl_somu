@@ -1,7 +1,7 @@
 import asyncio
 import logging
 import os
-import re
+import re as _re
 from datetime import datetime
 
 from crawl4ai import AsyncWebCrawler, CrawlerRunConfig
@@ -20,8 +20,11 @@ TECH_KEYWORDS = [
 ]
 
 TRYON_KEYWORDS = [
-    "virtual try-on", "virtual tryon", "try on", "augmented reality",
-    "AR try", "virtual fitting", "try before you buy", "see how it looks",
+    "virtual try-on", "virtual tryon", "virtual try on",
+    "augmented reality try", "augmented reality", "AR try-on",
+    "virtual fitting room", "virtual fitting",
+    "try before you buy",
+    "see how it looks on you",
     "virtual wardrobe",
 ]
 
@@ -38,10 +41,14 @@ def extract_tech_hints(text: str) -> list[str]:
     if not text:
         return []
     found = []
-    text_lower = text.lower()
     for kw in TECH_KEYWORDS:
-        if kw.lower() in text_lower and kw not in found:
-            found.append(kw)
+        if len(kw) <= 3:
+            pattern = r'\b' + _re.escape(kw) + r'\b'
+            if _re.search(pattern, text, _re.IGNORECASE) and kw not in found:
+                found.append(kw)
+        else:
+            if kw.lower() in text.lower() and kw not in found:
+                found.append(kw)
     return found
 
 
@@ -50,7 +57,7 @@ def extract_pricing_plans(text: str) -> list[str]:
         return []
     plans = []
     for pattern in PRICING_PATTERNS:
-        matches = re.findall(pattern, text, re.IGNORECASE)
+        matches = _re.findall(pattern, text, _re.IGNORECASE)
         for m in matches:
             cleaned = m.strip()
             if not cleaned:
