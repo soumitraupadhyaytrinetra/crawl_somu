@@ -50,14 +50,14 @@ async def get_stats():
 
 
 @app.get("/api/competitors")
-async def get_competitors(region: Optional[str] = None, type: Optional[str] = None):
+async def get_competitors(region: Optional[str] = None, competitor_type: Optional[str] = None):
     db = _db()
     await db.init()
     rows = await db.fetch_all()
     if region:
         rows = [r for r in rows if r.get("region") == region]
-    if type:
-        rows = [r for r in rows if r.get("type") == type]
+    if competitor_type:
+        rows = [r for r in rows if r.get("type") == competitor_type]
     return rows
 
 
@@ -94,11 +94,14 @@ async def _run_scrape(section: str, job_id: str) -> None:
         _stdout, stderr = await proc.communicate()
         if proc.returncode == 0:
             _jobs[job_id] = {"status": "done", "message": f"{section.capitalize()} scraped successfully"}
+            asyncio.get_event_loop().call_later(60, _jobs.pop, job_id, None)
         else:
             err = stderr.decode(errors="replace")[-500:]
             _jobs[job_id] = {"status": "error", "message": err}
+            asyncio.get_event_loop().call_later(60, _jobs.pop, job_id, None)
     except Exception as e:
         _jobs[job_id] = {"status": "error", "message": str(e)}
+        asyncio.get_event_loop().call_later(60, _jobs.pop, job_id, None)
 
 
 @app.post("/api/scrape/{section}")
