@@ -4,7 +4,7 @@ import uuid
 from pathlib import Path
 from typing import Optional
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
 
 PROJECT_ROOT = Path(__file__).parent.parent
@@ -50,7 +50,7 @@ async def get_stats():
 
 
 @app.get("/api/competitors")
-async def get_competitors(region: Optional[str] = None, competitor_type: Optional[str] = None):
+async def get_competitors(region: Optional[str] = None, competitor_type: Optional[str] = Query(None, alias="type")):
     db = _db()
     await db.init()
     rows = await db.fetch_all()
