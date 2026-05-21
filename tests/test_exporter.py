@@ -58,7 +58,8 @@ async def test_export_json_grouped():
     assert os.path.exists(path)
     with open(path) as f:
         data = json.load(f)
-    assert "india" in data
-    assert "global" in data
-    assert data["india"]["retailer"][0]["name"] == "myntra"
-    assert data["global"]["platform"][0]["name"] == "vue_ai"
+    assert "competitors" in data
+    assert "india" in data["competitors"]
+    assert "global" in data["competitors"]
+    assert data["competitors"]["india"]["retailer"][0]["name"] == "myntra"
+    assert data["competitors"]["global"]["platform"][0]["name"] == "vue_ai"
