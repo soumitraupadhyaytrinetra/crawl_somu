@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -m pytest tests/ -v)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Skill(superpowers:finishing-a-development-branch)",
+      "Skill(superpowers:finishing-a-development-branch:*)",
+      "Bash(pytest tests/ -v)",
+      "Bash(python -c \"import pydantic; print\\('pydantic OK'\\)\")",
+      "Bash(python main.py --run-now --target myntra)"
+    ]
+  }
+}

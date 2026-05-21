@@ -3,7 +3,7 @@ import type {
   Section, Region, ScrapeJobResponse, JobStatus,
 } from './types'
 
-const BASE = 'http://localhost:8000'
+const BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'
 
 export async function fetchStats(): Promise<Stats> {
   const res = await fetch(`${BASE}/api/stats`, { cache: 'no-store' })

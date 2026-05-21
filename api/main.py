@@ -1,6 +1,8 @@
 import asyncio
+import os
 import sys
 import uuid
+from contextlib import asynccontextmanager
 from pathlib import Path
 from typing import Optional
 
@@ -13,29 +15,37 @@ sys.path.insert(0, str(PROJECT_ROOT))
 
 from storage.db import Database
 
-app = FastAPI(title="MirrorFit Intelligence API")
+_db_instance: Database = None
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    global _db_instance
+    db_url = os.environ.get("DATABASE_URL", "postgresql://localhost/mirrorfit")
+    _db_instance = Database(db_url)
+    await _db_instance.init()
+    yield
+    await _db_instance.close()
+
+
+app = FastAPI(title="MirrorFit Intelligence API", lifespan=lifespan)
+
+_origins = os.environ.get("ALLOWED_ORIGINS", "http://localhost:3000").split(",")
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=_origins,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-DB_PATH = PROJECT_ROOT / "data" / "competitors.db"
 _jobs: dict[str, dict] = {}
-
-
-def _db() -> Database:
-    return Database(str(DB_PATH))
 
 
 @app.get("/api/stats")
 async def get_stats():
-    db = _db()
-    await db.init()
-    competitors = await db.fetch_all()
-    influencers = await db.fetch_all_influencers()
-    events = await db.fetch_all_events(upcoming_only=True)
+    competitors = await _db_instance.fetch_all()
+    influencers = await _db_instance.fetch_all_influencers()
+    events = await _db_instance.fetch_all_events(upcoming_only=True)
     last_scraped = None
     if competitors:
         timestamps = [c.get("scraped_at") for c in competitors if c.get("scraped_at")]
@@ -51,9 +61,7 @@ async def get_stats():
 
 @app.get("/api/competitors")
 async def get_competitors(region: Optional[str] = None, competitor_type: Optional[str] = Query(None, alias="type")):
-    db = _db()
-    await db.init()
-    rows = await db.fetch_all()
+    rows = await _db_instance.fetch_all()
     if region:
         rows = [r for r in rows if r.get("region") == region]
     if competitor_type:
@@ -63,9 +71,7 @@ async def get_competitors(region: Optional[str] = None, competitor_type: Optiona
 
 @app.get("/api/influencers")
 async def get_influencers(region: Optional[str] = None):
-    db = _db()
-    await db.init()
-    rows = await db.fetch_all_influencers()
+    rows = await _db_instance.fetch_all_influencers()
     if region:
         rows = [r for r in rows if r.get("region") == region]
     return rows
@@ -73,9 +79,7 @@ async def get_influencers(region: Optional[str] = None):
 
 @app.get("/api/events")
 async def get_events(region: Optional[str] = None):
-    db = _db()
-    await db.init()
-    rows = await db.fetch_all_events(upcoming_only=True)
+    rows = await _db_instance.fetch_all_events(upcoming_only=True)
     if region:
         rows = [r for r in rows if r.get("region") == region]
     return rows

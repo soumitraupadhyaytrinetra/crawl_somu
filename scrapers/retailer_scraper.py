@@ -76,6 +76,9 @@ class RetailerScraper(BaseScraper):
                 tech_hints=extracted.get("tech_hints") or [],
                 categories=extracted.get("categories") or [],
                 sample_products=sample_products,
+                social_links=extracted.get("social_links") or {},
+                has_newsletter=bool(extracted.get("has_newsletter", False)),
+                ad_tech=extracted.get("ad_tech") or [],
             )
 
         # Fallback: regex extraction

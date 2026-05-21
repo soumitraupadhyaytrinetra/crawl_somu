@@ -1,0 +1,476 @@
+events:
+  # ══ INDIA ══════════════════════════════════════════════════════════════════
+
+  # TradeIndia — city-wise, has exact dates
+  - name: tradeindia_fashion_all
+    display_name: "TradeIndia All India Fashion Trade Shows"
+    url: "https://tradeshows.tradeindia.com/apparel-fashion/"
+    region: india
+    scrape_paths: [/]
+
+  - name: tradeindia_fashion_delhi
+    display_name: "TradeIndia Fashion - New Delhi"
+    url: "https://tradeshows.tradeindia.com/apparel-fashion/city/new-delhi/228066/"
+    region: india
+    scrape_paths: [/]
+
+  - name: tradeindia_fashion_mumbai
+    display_name: "TradeIndia Fashion - Mumbai"
+    url: "https://tradeshows.tradeindia.com/apparel-fashion/city/mumbai/228067/"
+    region: india
+    scrape_paths: [/]
+
+  - name: tradeindia_fashion_bangalore
+    display_name: "TradeIndia Fashion - Bangalore"
+    url: "https://tradeshows.tradeindia.com/apparel-fashion/city/bangalore/228070/"
+    region: india
+    scrape_paths: [/]
+
+  - name: tradeindia_textile_all
+    display_name: "TradeIndia All India Textile Trade Shows"
+    url: "https://tradeshows.tradeindia.com/textile/"
+    region: india
+    scrape_paths: [/]
+
+  - name: tradeindia_retail_all
+    display_name: "TradeIndia All India Retail Trade Shows"
+    url: "https://tradeshows.tradeindia.com/retail/"
+    region: india
+    scrape_paths: [/]
+
+  # Fibre2Fashion — textile & apparel trade shows with dates
+  - name: fibre2fashion_india
+    display_name: "Fibre2Fashion India Trade Shows"
+    url: "https://www.fibre2fashion.com/trade-shows/india/"
+    region: india
+    scrape_paths: [/]
+
+  - name: fibre2fashion_global_fashion
+    display_name: "Fibre2Fashion Fashion Trade Shows"
+    url: "https://www.fibre2fashion.com/trade-shows/fashion/"
+    region: india
+    scrape_paths: [/]
+
+  # BizTradeShows — comprehensive India trade show database
+  - name: biztradeshows_india_fashion
+    display_name: "BizTradeShows India Fashion Events"
+    url: "https://www.biztradeshows.com/trade-events/india.html"
+    region: india
+    scrape_paths: [/]
+
+  # 10Times — best aggregator with upcoming filter
+  - name: 10times_india_fashion
+    display_name: "10Times India Fashion Events"
+    url: "https://10times.com/fashion-events/india"
+    region: india
+    scrape_paths: [/]
+
+  - name: 10times_india_textile
+    display_name: "10Times India Textile Events"
+    url: "https://10times.com/textile-apparel/india"
+    region: india
+    scrape_paths: [/]
+
+  - name: 10times_india_retail
+    display_name: "10Times India Retail Events"
+    url: "https://10times.com/retail/india"
+    region: india
+    scrape_paths: [/]
+
+  - name: 10times_india_beauty
+    display_name: "10Times India Beauty Events"
+    url: "https://10times.com/beauty/india"
+    region: india
+    scrape_paths: [/]
+
+  # EventsEye — international trade fair database
+  - name: eventseye_fashion_india
+    display_name: "EventsEye Fashion & Apparel India"
+    url: "https://www.eventseye.com/fairs/c2_fashion_apparel_textile_trade_shows.html"
+    region: india
+    scrape_paths: [/]
+
+  # Eventbrite India
+  - name: eventbrite_india_fashion
+    display_name: "Eventbrite India Fashion Shows"
+    url: "https://www.eventbrite.com/d/india/fashion-shows/"
+    region: india
+    scrape_paths: [/]
+
+  - name: eventbrite_india_fashion2
+    display_name: "Eventbrite India Fashion Events"
+    url: "https://www.eventbrite.com/d/india/fashion/"
+    region: india
+    scrape_paths: [/]
+
+  # Indian Retailer & Industry bodies
+  - name: indianretailer_events
+    display_name: "Indian Retailer Events"
+    url: "https://www.indianretailer.com/event"
+    region: india
+    scrape_paths: [/]
+
+  - name: india_fashion_forum
+    display_name: "India Fashion Forum"
+    url: "https://indiafashionforum.in"
+    region: india
+    scrape_paths: [/, /agenda]
+
+  - name: fdci_india
+    display_name: "FDCI Fashion Design Council India"
+    url: "https://fdci.org"
+    region: india
+    scrape_paths: [/, /events]
+
+  - name: lakme_fashion_week
+    display_name: "Lakme Fashion Week"
+    url: "https://www.lakmefashionweek.com"
+    region: india
+    scrape_paths: [/, /schedule]
+
+  - name: expodisplay_india
+    display_name: "ExpoDisplay India Exhibitions"
+    url: "https://www.expodisplay.com/India/"
+    region: india
+    scrape_paths: [/]
+
+  - name: fashionweekdates_india
+    display_name: "Fashion Week Dates India"
+    url: "https://www.fashionweekdates.com/india/"
+    region: india
+    scrape_paths: [/]
+
+  - name: ficci_events_india
+    display_name: "FICCI Textile & Fashion Events"
+    url: "https://ficci.in/sector-details.asp?sid=25"
+    region: india
+    scrape_paths: [/]
+
+  - name: cii_fashion_events
+    display_name: "CII Fashion & Retail Events"
+    url: "https://www.cii.in/Events.aspx"
+    region: india
+    scrape_paths: [/]
+
+  - name: indiaexhibitions_fashion
+    display_name: "India Exhibitions Fashion"
+    url: "https://www.indiaexhibitions.com/exhibitions/fashion-apparel/"
+    region: india
+    scrape_paths: [/]
+
+  # ══ UAE / DUBAI ════════════════════════════════════════════════════════════
+
+  # 10Times UAE
+  - name: 10times_uae_fashion
+    display_name: "10Times UAE Fashion Events"
+    url: "https://10times.com/fashion-events/united-arab-emirates"
+    region: uae
+    scrape_paths: [/]
+
+  - name: 10times_uae_retail
+    display_name: "10Times UAE Retail Events"
+    url: "https://10times.com/retail/united-arab-emirates"
+    region: uae
+    scrape_paths: [/]
+
+  - name: 10times_uae_textile
+    display_name: "10Times UAE Textile Events"
+    url: "https://10times.com/textile-apparel/united-arab-emirates"
+    region: uae
+    scrape_paths: [/]
+
+  - name: 10times_uae_beauty
+    display_name: "10Times UAE Beauty Events"
+    url: "https://10times.com/beauty/united-arab-emirates"
+    region: uae
+    scrape_paths: [/]
+
+  # BizTradeShows UAE
+  - name: biztradeshows_uae
+    display_name: "BizTradeShows UAE Events"
+    url: "https://www.biztradeshows.com/trade-events/united-arab-emirates.html"
+    region: uae
+    scrape_paths: [/]
+
+  # ExpoDisplay UAE
+  - name: expodisplay_uae
+    display_name: "ExpoDisplay UAE Exhibitions"
+    url: "https://www.expodisplay.com/UAE/"
+    region: uae
+    scrape_paths: [/]
+
+  # Visit Dubai — official events calendar
+  - name: visitdubai_whats_on
+    display_name: "Visit Dubai What's On"
+    url: "https://www.visitdubai.com/en/whats-on"
+    region: uae
+    scrape_paths: [/]
+
+  - name: visitdubai_events
+    display_name: "Visit Dubai Events"
+    url: "https://www.visitdubai.com/en/events"
+    region: uae
+    scrape_paths: [/]
+
+  # Dubai Calendar
+  - name: dubaicalendar_fashion
+    display_name: "Dubai Calendar Fashion"
+    url: "https://www.dubaicalendar.com/events/category/fashion"
+    region: uae
+    scrape_paths: [/]
+
+  # Time Out Dubai — fashion events
+  - name: timeoutdubai_fashion
+    display_name: "Time Out Dubai Fashion Events"
+    url: "https://www.timeoutdubai.com/things-to-do/events/fashion"
+    region: uae
+    scrape_paths: [/]
+
+  # Fibre2Fashion UAE
+  - name: fibre2fashion_uae
+    display_name: "Fibre2Fashion UAE Trade Shows"
+    url: "https://www.fibre2fashion.com/trade-shows/united-arab-emirates/"
+    region: uae
+    scrape_paths: [/]
+
+  # Eventbrite UAE
+  - name: eventbrite_uae_fashion
+    display_name: "Eventbrite UAE Fashion Events"
+    url: "https://www.eventbrite.com/d/united-arab-emirates/fashion/"
+    region: uae
+    scrape_paths: [/]
+
+  - name: eventbrite_dubai_fashion
+    display_name: "Eventbrite Dubai Fashion Events"
+    url: "https://www.eventbrite.com/d/united-arab-emirates--dubai/fashion/"
+    region: uae
+    scrape_paths: [/]
+
+  # Arab Fashion Council & Dubai Fashion Week
+  - name: arab_fashion_council
+    display_name: "Arab Fashion Council"
+    url: "https://arabfashioncouncil.com"
+    region: uae
+    scrape_paths: [/, /events]
+
+  - name: dubai_fashion_week
+    display_name: "Dubai Fashion Week"
+    url: "https://dubaifashionweek.ae"
+    region: uae
+    scrape_paths: [/, /schedule]
+
+  - name: beautyworld_me
+    display_name: "Beautyworld Middle East"
+    url: "https://www.beautyworldme.com"
+    region: uae
+    scrape_paths: [/, /events]
+
+  - name: index_dubai
+    display_name: "INDEX Dubai"
+    url: "https://www.indexdubai.com"
+    region: uae
+    scrape_paths: [/, /exhibitors]
+
+  - name: fashionunited_me
+    display_name: "FashionUnited Middle East Events"
+    url: "https://fashionunited.ae/events"
+    region: uae
+    scrape_paths: [/]
+
+  - name: gulfood_fashion
+    display_name: "Dubai Retail & Fashion Events"
+    url: "https://www.dubairetailer.com/events"
+    region: uae
+    scrape_paths: [/]
+
+  - name: mydubai_events
+    display_name: "MyDubai Events"
+    url: "https://www.mydubai.com/en/events"
+    region: uae
+    scrape_paths: [/]
+
+  # ══ GLOBAL ═════════════════════════════════════════════════════════════════
+  - name: pure_london
+    display_name: "Pure London"
+    url: "https://purelondon.com"
+    region: global
+    scrape_paths: [/, /programme]
+
+  - name: nrf_retail_big_show
+    display_name: "NRF Retail's Big Show"
+    url: "https://nrfbigshow.nrf.com"
+    region: global
+    scrape_paths: [/, /agenda]
+
+  - name: shoptalk
+    display_name: "Shoptalk"
+    url: "https://shoptalk.com"
+    region: global
+    scrape_paths: [/, /agenda]
+
+  - name: etail_europe
+    display_name: "eTail Europe"
+    url: "https://etaileurope.wbresearch.com"
+    region: global
+    scrape_paths: [/, /agenda]
+
+  - name: premiere_vision_paris
+    display_name: "Première Vision Paris"
+    url: "https://www.premierevision.com"
+    region: global
+    scrape_paths: [/, /en/programme]
+
+  - name: magic_las_vegas
+    display_name: "MAGIC Las Vegas"
+    url: "https://www.magicfashionshow.com"
+    region: global
+    scrape_paths: [/, /about]
+
+  - name: coterie_new_york
+    display_name: "Coterie New York"
+    url: "https://www.coterieny.com"
+    region: global
+    scrape_paths: [/, /exhibitors]
+
+  # ══ INDIA — additional ═════════════════════════════════════════════════════
+
+  # Messe Frankfurt India — organises GTExpo, Texworld, Stitch Show, Yarn Expo
+  - name: messe_frankfurt_india_apparel
+    display_name: "Messe Frankfurt India Apparel & Textile Events"
+    url: "https://india.messefrankfurt.com/mumbai/en/trade-fairs.html"
+    region: india
+    scrape_paths: [/]
+
+  - name: texworld_india
+    display_name: "Texworld India"
+    url: "https://texworld-india.in.messefrankfurt.com/mumbai/en.html"
+    region: india
+    scrape_paths: [/]
+
+  - name: garment_technology_expo
+    display_name: "Garment Technology Expo (GTExpo) Delhi"
+    url: "https://www.garmenttechnologyexpo.com"
+    region: india
+    scrape_paths: [/, /about]
+
+  - name: iigf_india
+    display_name: "India International Garment Fair (IIGF)"
+    url: "https://iigf.in"
+    region: india
+    scrape_paths: [/]
+
+  - name: amazon_india_fashion_week
+    display_name: "Amazon India Fashion Week (AIFW)"
+    url: "https://amazonindiafashionweek.com"
+    region: india
+    scrape_paths: [/]
+
+  - name: wfw_india
+    display_name: "Wills India / India Fashion Week Calendar"
+    url: "https://www.fashionweekdates.com/india/"
+    region: india
+    scrape_paths: [/]
+
+  - name: india_exhibitions_garment
+    display_name: "India Exhibitions Garment & Clothing"
+    url: "https://www.indiaexhibitions.com/exhibitions/garment-clothing/"
+    region: india
+    scrape_paths: [/]
+
+  - name: india_exhibitions_textile
+    display_name: "India Exhibitions Textile"
+    url: "https://www.indiaexhibitions.com/exhibitions/textile/"
+    region: india
+    scrape_paths: [/]
+
+  - name: 10times_india_apparel
+    display_name: "10Times India Apparel Events"
+    url: "https://10times.com/apparel/india"
+    region: india
+    scrape_paths: [/]
+
+  - name: 10times_india_trade
+    display_name: "10Times India Trade & Expo Events"
+    url: "https://10times.com/trade-shows/india"
+    region: india
+    scrape_paths: [/]
+
+  - name: eventseye_india_textile
+    display_name: "EventsEye India Textile Trade Shows"
+    url: "https://www.eventseye.com/fairs/c2_fashion_apparel_textile_trade_shows_india.html"
+    region: india
+    scrape_paths: [/]
+
+  - name: eventseye_india_retail
+    display_name: "EventsEye India Retail Trade Shows"
+    url: "https://www.eventseye.com/fairs/c2_shops_retail_trade_shows_india.html"
+    region: india
+    scrape_paths: [/]
+
+  # ══ UAE — additional ═══════════════════════════════════════════════════════
+
+  # Dubai World Trade Centre — main venue, most comprehensive Dubai event calendar
+  - name: dwtc_whats_on
+    display_name: "Dubai World Trade Centre – What's On"
+    url: "https://www.dwtc.com/en/whats-on"
+    region: uae
+    scrape_paths: [/]
+
+  - name: dwtc_events_fashion
+    display_name: "Dubai World Trade Centre Fashion & Beauty Events"
+    url: "https://www.dwtc.com/en/events"
+    region: uae
+    scrape_paths: [/]
+
+  # Fashion Forward Dubai (FFwd)
+  - name: fashion_forward_dubai
+    display_name: "Fashion Forward Dubai (FFwd)"
+    url: "https://fashionforwarddubai.com"
+    region: uae
+    scrape_paths: [/, /schedule]
+
+  # Cosmoprof Middle East
+  - name: cosmoprof_me
+    display_name: "Cosmoprof Middle East"
+    url: "https://www.cosmoprofmiddleeast.com"
+    region: uae
+    scrape_paths: [/]
+
+  # The Bride Show Dubai
+  - name: bride_show_dubai
+    display_name: "The Bride Show Dubai"
+    url: "https://www.thebrideshowdubai.com"
+    region: uae
+    scrape_paths: [/]
+
+  # Dubai Design Week
+  - name: dubai_design_week
+    display_name: "Dubai Design Week"
+    url: "https://www.dubaidesignweek.ae"
+    region: uae
+    scrape_paths: [/, /programme]
+
+  # Informa Markets Middle East (CABSAT, INDEX, Gulf Food)
+  - name: informa_markets_uae
+    display_name: "Informa Markets UAE Fashion & Lifestyle"
+    url: "https://informamarkets.com/en/regions/middle-east-and-africa.html"
+    region: uae
+    scrape_paths: [/]
+
+  - name: 10times_uae_apparel
+    display_name: "10Times UAE Apparel Events"
+    url: "https://10times.com/apparel/united-arab-emirates"
+    region: uae
+    scrape_paths: [/]
+
+  - name: eventseye_uae_fashion
+    display_name: "EventsEye UAE Fashion Trade Shows"
+    url: "https://www.eventseye.com/fairs/c2_fashion_apparel_textile_trade_shows_uae.html"
+    region: uae
+    scrape_paths: [/]
+
+  - name: eventseye_uae_retail
+    display_name: "EventsEye UAE Retail Trade Shows"
+    url: "https://www.eventseye.com/fairs/c2_shops_retail_trade_shows_uae.html"
+    region: uae
+    scrape_paths: [/]

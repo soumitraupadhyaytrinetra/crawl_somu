@@ -12,10 +12,6 @@ export default function DashboardPage() {
     fetchStats().then(setStats).catch(() => setError(true))
   }, [])
 
-  const lastScraped = stats?.last_scraped
-    ? new Date(stats.last_scraped).toLocaleString()
-    : '—'
-
   return (
     <div>
       <h1 className="text-2xl font-bold mb-2">Dashboard</h1>
@@ -39,17 +35,13 @@ export default function DashboardPage() {
           label="Influencers"
           value={stats ? stats.influencers : '…'}
           href="/influencers"
-          sub="Instagram, Apify"
+          sub="Click to view"
         />
         <StatsCard
           label="Upcoming Events"
           value={stats ? stats.events : '…'}
           href="/events"
-          sub="India · UAE · Global"
-        />
-        <StatsCard
-          label="Last Scraped"
-          value={stats ? lastScraped : '…'}
+          sub="Click to view"
         />
       </div>
     </div>

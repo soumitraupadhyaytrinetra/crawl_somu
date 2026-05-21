@@ -1,0 +1,83 @@
+influencer_sources:
+  # ── India ──────────────────────────────────────────────────────────────────
+  - name: kofluence_india_fashion
+    display_name: "Kofluence - Top Fashion Influencers India"
+    url: "https://kofluence.com/blog/top-fashion-influencers-india"
+    region: india
+
+  - name: winkl_fashion_india
+    display_name: "Winkl - Fashion Influencers India"
+    url: "https://www.winkl.co/blog/fashion-influencers-india"
+    region: india
+
+  - name: influencer_in_fashion
+    display_name: "Influencer.in Fashion Directory"
+    url: "https://influencer.in/category/fashion"
+    region: india
+
+  - name: plixxo_fashion
+    display_name: "Plixxo Fashion Influencers"
+    url: "https://www.plixxo.com/m/fashion"
+    region: india
+
+  - name: blogmint_fashion
+    display_name: "Blogmint Fashion Influencers"
+    url: "https://www.blogmint.com/category/fashion"
+    region: india
+
+  - name: socialmediatoday_india_fashion
+    display_name: "Top Instagram Fashion Influencers India 2024"
+    url: "https://www.socialpilot.co/blog/fashion-influencers-in-india"
+    region: india
+
+  - name: glamcheck_influencers
+    display_name: "GlamCheck Fashion Influencers"
+    url: "https://www.glamcheck.com/fashion/top-indian-fashion-bloggers/"
+    region: india
+
+  - name: digit_eye_fashion_india
+    display_name: "Top Indian Fashion Bloggers List"
+    url: "https://www.digit.in/features/social/top-fashion-influencers-india-instagram-56982.html"
+    region: india
+
+  # ── UAE / Middle East ──────────────────────────────────────────────────────
+  - name: uae_fashion_influencers_combin
+    display_name: "Best Fashion Bloggers UAE Instagram"
+    url: "https://blog.combin.com/best-fashion-bloggers-instagram-uae/"
+    region: uae
+
+  - name: arab_fashion_influencers
+    display_name: "Top Arab Fashion Influencers"
+    url: "https://www.youplusme.com/blog/top-fashion-influencers-uae"
+    region: uae
+
+  - name: influencer_uae_directory
+    display_name: "UAE Influencer Marketing Directory"
+    url: "https://www.influencer.ae/fashion"
+    region: uae
+
+  - name: socialeyez_uae_fashion
+    display_name: "Socialeyez UAE Fashion Influencers"
+    url: "https://socialeyez.com/influencers/fashion-uae"
+    region: uae
+
+  # ── Global ─────────────────────────────────────────────────────────────────
+  - name: hypeauditor_fashion_global
+    display_name: "HypeAuditor Top Fashion Influencers"
+    url: "https://hypeauditor.com/top-instagram-fashion/"
+    region: global
+
+  - name: starngage_fashion_global
+    display_name: "StarNgage Fashion Influencers"
+    url: "https://starngage.com/app/global/influencer/ranking/instagram/fashion"
+    region: global
+
+  - name: izea_fashion_influencers
+    display_name: "IZEA Fashion Influencer List"
+    url: "https://izea.com/resources/fashion-influencers/"
+    region: global
+
+  - name: later_fashion_influencers
+    display_name: "Later - Top Fashion Influencers Instagram"
+    url: "https://later.com/blog/fashion-influencers/"
+    region: global

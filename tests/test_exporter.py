@@ -8,23 +8,26 @@ from scrapers.models import CompetitorData
 from storage.db import Database
 from storage.exporter import Exporter
 
-TEST_DB = "./data/test_export.db"
+TEST_DB_URL = os.environ.get("DATABASE_URL", "postgresql://localhost/mirrorfit_test")
 TEST_OUTPUT = "./output/test"
 
 @pytest.fixture(autouse=True)
-def cleanup():
-    yield
-    for f in [TEST_DB]:
-        if os.path.exists(f):
-            os.remove(f)
+async def cleanup():
+    db = Database(TEST_DB_URL)
+    await db.init()
+    async with db._pool.acquire() as conn:
+        await conn.execute("TRUNCATE competitors, influencers, events RESTART IDENTITY CASCADE")
+    yield db
+    async with db._pool.acquire() as conn:
+        await conn.execute("TRUNCATE competitors, influencers, events RESTART IDENTITY CASCADE")
+    await db.close()
     import shutil
     if os.path.exists(TEST_OUTPUT):
         shutil.rmtree(TEST_OUTPUT)
 
 @pytest.mark.asyncio
-async def test_export_csv_creates_file():
-    db = Database(TEST_DB)
-    await db.init()
+async def test_export_csv_creates_file(cleanup):
+    db = cleanup
     await db.upsert(CompetitorData(
         name="myntra", display_name="Myntra",
         url="https://myntra.com", region="india", type="retailer",
@@ -40,9 +43,8 @@ async def test_export_csv_creates_file():
     assert rows[0]["name"] == "myntra"
 
 @pytest.mark.asyncio
-async def test_export_json_grouped():
-    db = Database(TEST_DB)
-    await db.init()
+async def test_export_json_grouped(cleanup):
+    db = cleanup
     await db.upsert(CompetitorData(
         name="myntra", display_name="Myntra",
         url="https://myntra.com", region="india", type="retailer",

@@ -1,155 +1,662 @@
 competitors:
-  # AI Try-On Platforms — Global
+  # ── AI Try-On / Sizing Platforms — Global ────────────────────────────────
   - name: vue_ai
     display_name: "Vue.ai"
     url: "https://vue.ai"
     region: global
     type: platform
-    scrape_paths:
-      - /
-      - /platform
-      - /pricing
+    scrape_paths: [/, /platform, /pricing]
 
   - name: zakeke
     display_name: "Zakeke"
     url: "https://www.zakeke.com"
     region: global
     type: platform
-    scrape_paths:
-      - /
-      - /pricing
+    scrape_paths: [/, /pricing]
 
   - name: fit_match
     display_name: "Fit:Match"
     url: "https://www.fitmatch.ai"
     region: global
     type: platform
-    scrape_paths:
-      - /
+    scrape_paths: [/]
 
   - name: sizer_me
     display_name: "Sizer.me"
     url: "https://sizer.me"
     region: global
     type: platform
-    scrape_paths:
-      - /
+    scrape_paths: [/]
 
   - name: threedlook
     display_name: "3DLOOK"
     url: "https://3dlook.ai"
     region: global
     type: platform
-    scrape_paths:
-      - /
-      - /pricing
+    scrape_paths: [/, /pricing]
 
-  # Fashion Retailers — India
-  - name: myntra
-    display_name: "Myntra"
-    url: "https://www.myntra.com"
+  - name: zeekit
+    display_name: "Zeekit"
+    url: "https://www.zeekit.me"
+    region: global
+    type: platform
+    scrape_paths: [/]
+
+  - name: virtusize
+    display_name: "Virtusize"
+    url: "https://www.virtusize.com"
+    region: global
+    type: platform
+    scrape_paths: [/, /solutions]
+
+  - name: tryon_io
+    display_name: "TryOn.io"
+    url: "https://www.tryon.io"
+    region: global
+    type: platform
+    scrape_paths: [/]
+
+  - name: reactive_reality
+    display_name: "Reactive Reality"
+    url: "https://www.reactivereality.com"
+    region: global
+    type: platform
+    scrape_paths: [/, /solutions]
+
+  - name: fits_me
+    display_name: "Fits.me"
+    url: "https://fits.me"
+    region: global
+    type: platform
+    scrape_paths: [/]
+
+  # ── India — D2C & Mid-Size Fashion Retailers ─────────────────────────────
+  - name: fabindia
+    display_name: "FabIndia"
+    url: "https://www.fabindia.com"
     region: india
     type: retailer
-    scrape_paths:
-      - /
-      - /men
-      - /women
+    scrape_paths: [/, /men, /women, /kids]
 
-  - name: nykaa_fashion
-    display_name: "Nykaa Fashion"
-    url: "https://www.nykaafashion.com"
+  - name: biba
+    display_name: "BIBA"
+    url: "https://www.biba.in"
     region: india
     type: retailer
-    scrape_paths:
-      - /
-      - /women
-      - /men
+    scrape_paths: [/, /women]
 
-  - name: ajio
-    display_name: "Ajio"
-    url: "https://www.ajio.com"
+  - name: w_for_woman
+    display_name: "W for Woman"
+    url: "https://www.wforwoman.com"
     region: india
     type: retailer
-    scrape_paths:
-      - /
-      - /s/men
-      - /s/women
+    scrape_paths: [/, /new-arrivals]
 
-  - name: flipkart_fashion
-    display_name: "Flipkart Fashion"
-    url: "https://www.flipkart.com"
+  - name: global_desi
+    display_name: "Global Desi"
+    url: "https://www.global-desi.com"
     region: india
     type: retailer
-    scrape_paths:
-      - /clothing-and-accessories
+    scrape_paths: [/]
 
-  - name: meesho
-    display_name: "Meesho"
-    url: "https://meesho.com"
+  - name: libas
+    display_name: "Libas"
+    url: "https://www.libas.in"
     region: india
     type: retailer
-    scrape_paths:
-      - /
+    scrape_paths: [/, /women, /men]
 
-  - name: tata_cliq
-    display_name: "Tata Cliq"
-    url: "https://www.tatacliq.com"
+  - name: indya
+    display_name: "Indya"
+    url: "https://www.indya.com"
     region: india
     type: retailer
-    scrape_paths:
-      - /
-      - /men
-      - /women
+    scrape_paths: [/, /festive, /new-arrivals]
 
-  # Fashion Retailers — UAE/Dubai
-  - name: noon_fashion
-    display_name: "Noon Fashion"
-    url: "https://www.noon.com"
-    region: uae
+  - name: faballey
+    display_name: "FabAlley"
+    url: "https://www.faballey.com"
+    region: india
     type: retailer
-    scrape_paths:
-      - /uae-en/fashion
+    scrape_paths: [/, /new-arrivals]
 
-  - name: namshi
-    display_name: "Namshi"
-    url: "https://en-ae.namshi.com"
-    region: uae
+  - name: bewakoof
+    display_name: "Bewakoof"
+    url: "https://www.bewakoof.com"
+    region: india
     type: retailer
-    scrape_paths:
-      - /
-      - /men
-      - /women
+    scrape_paths: [/, /men, /women]
 
+  - name: the_souled_store
+    display_name: "The Souled Store"
+    url: "https://www.thesouledstore.com"
+    region: india
+    type: retailer
+    scrape_paths: [/, /men, /women]
+
+  - name: snitch
+    display_name: "Snitch"
+    url: "https://www.snitch.co.in"
+    region: india
+    type: retailer
+    scrape_paths: [/, /men]
+
+  - name: urbanic
+    display_name: "Urbanic"
+    url: "https://urbanic.com"
+    region: india
+    type: retailer
+    scrape_paths: [/in, /in/new-in]
+
+  - name: berrylush
+    display_name: "Berrylush"
+    url: "https://www.berrylush.com"
+    region: india
+    type: retailer
+    scrape_paths: [/, /new-arrivals]
+
+  - name: bunaai
+    display_name: "Bunaai"
+    url: "https://www.bunaai.com"
+    region: india
+    type: retailer
+    scrape_paths: [/]
+
+  - name: manyavar
+    display_name: "Manyavar"
+    url: "https://www.manyavar.com"
+    region: india
+    type: retailer
+    scrape_paths: [/, /men, /women]
+
+  - name: tasva
+    display_name: "Tasva"
+    url: "https://www.tasva.com"
+    region: india
+    type: retailer
+    scrape_paths: [/]
+
+  - name: anita_dongre
+    display_name: "Anita Dongre"
+    url: "https://www.anitadongre.com"
+    region: india
+    type: retailer
+    scrape_paths: [/, /bridal, /prêt]
+
+  - name: aurelia
+    display_name: "Aurelia"
+    url: "https://www.aurelia.in"
+    region: india
+    type: retailer
+    scrape_paths: [/, /new-arrivals]
+
+  - name: and_fashion
+    display_name: "AND Fashion"
+    url: "https://www.andindia.com"
+    region: india
+    type: retailer
+    scrape_paths: [/, /new-arrivals]
+
+  - name: pantaloons
+    display_name: "Pantaloons"
+    url: "https://www.pantaloons.com"
+    region: india
+    type: retailer
+    scrape_paths: [/, /men, /women, /kids]
+
+  - name: westside
+    display_name: "Westside"
+    url: "https://www.westside.com"
+    region: india
+    type: retailer
+    scrape_paths: [/, /women, /men]
+
+  - name: limeroad
+    display_name: "LimeRoad"
+    url: "https://www.limeroad.com"
+    region: india
+    type: retailer
+    scrape_paths: [/, /women, /men]
+
+  - name: the_label_life
+    display_name: "The Label Life"
+    url: "https://www.thelabellife.com"
+    region: india
+    type: retailer
+    scrape_paths: [/, /new-arrivals]
+
+  - name: okhai
+    display_name: "Okhai"
+    url: "https://okhai.org"
+    region: india
+    type: retailer
+    scrape_paths: [/]
+
+  - name: zivame
+    display_name: "Zivame"
+    url: "https://www.zivame.com"
+    region: india
+    type: retailer
+    scrape_paths: [/, /lingerie, /activewear]
+
+  - name: clovia
+    display_name: "Clovia"
+    url: "https://www.clovia.com"
+    region: india
+    type: retailer
+    scrape_paths: [/, /lingerie, /nightwear]
+
+  - name: rare_rabbit
+    display_name: "Rare Rabbit"
+    url: "https://www.rarerabbit.in"
+    region: india
+    type: retailer
+    scrape_paths: [/, /men, /women]
+
+  - name: levi_india
+    display_name: "Levi's India"
+    url: "https://www.levi.in"
+    region: india
+    type: retailer
+    scrape_paths: [/, /men, /women]
+
+  - name: hm_india
+    display_name: "H&M India"
+    url: "https://www2.hm.com/en_in"
+    region: india
+    type: retailer
+    scrape_paths: [/, /ladies, /men, /kids]
+
+  - name: zara_india
+    display_name: "Zara India"
+    url: "https://www.zara.com/in"
+    region: india
+    type: retailer
+    scrape_paths: [/, /woman, /man]
+
+  - name: forever_new_india
+    display_name: "Forever New India"
+    url: "https://www.forevernew.co.in"
+    region: india
+    type: retailer
+    scrape_paths: [/, /new-in]
+
+  - name: only_india
+    display_name: "ONLY India"
+    url: "https://www.only.in"
+    region: india
+    type: retailer
+    scrape_paths: [/, /women]
+
+  - name: vero_moda_india
+    display_name: "Vero Moda India"
+    url: "https://www.veromoda.in"
+    region: india
+    type: retailer
+    scrape_paths: [/, /women]
+
+  - name: jack_jones_india
+    display_name: "Jack & Jones India"
+    url: "https://www.jackjones.com/in"
+    region: india
+    type: retailer
+    scrape_paths: [/, /men]
+
+  - name: campus_sutra
+    display_name: "Campus Sutra"
+    url: "https://www.campussutra.com"
+    region: india
+    type: retailer
+    scrape_paths: [/, /men, /women]
+
+  - name: chumbak
+    display_name: "Chumbak"
+    url: "https://www.chumbak.com"
+    region: india
+    type: retailer
+    scrape_paths: [/, /women-fashion]
+
+  - name: house_of_masaba
+    display_name: "House of Masaba"
+    url: "https://houseofmasaba.com"
+    region: india
+    type: retailer
+    scrape_paths: [/, /clothing]
+
+  - name: saundh
+    display_name: "Saundh"
+    url: "https://www.saundh.com"
+    region: india
+    type: retailer
+    scrape_paths: [/]
+
+  - name: aks_clothing
+    display_name: "AKS Clothing"
+    url: "https://www.aksclothing.com"
+    region: india
+    type: retailer
+    scrape_paths: [/]
+
+  - name: inddus
+    display_name: "Inddus"
+    url: "https://www.inddus.com"
+    region: india
+    type: retailer
+    scrape_paths: [/, /women]
+
+  - name: jaipur_kurti
+    display_name: "Jaipur Kurti"
+    url: "https://www.jaipurkurti.com"
+    region: india
+    type: retailer
+    scrape_paths: [/, /women]
+
+  - name: soch
+    display_name: "SOCH"
+    url: "https://www.soch.com"
+    region: india
+    type: retailer
+    scrape_paths: [/, /women]
+
+  # ── UAE — Mid-Size Fashion Retailers ─────────────────────────────────────
   - name: ounass
     display_name: "Ounass"
     url: "https://www.ounass.ae"
     region: uae
     type: retailer
-    scrape_paths:
-      - /
-      - /women
-      - /men
+    scrape_paths: [/, /women, /men]
 
   - name: level_shoes
     display_name: "Level Shoes"
     url: "https://www.levelshoes.com"
     region: uae
     type: retailer
-    scrape_paths:
-      - /
-
-  - name: sixth_street
-    display_name: "6thStreet"
-    url: "https://en-ae.6thstreet.com"
-    region: uae
-    type: retailer
-    scrape_paths:
-      - /
+    scrape_paths: [/]
 
   - name: max_fashion
     display_name: "Max Fashion UAE"
     url: "https://www.maxfashion.com"
     region: uae
     type: retailer
-    scrape_paths:
-      - /ae
+    scrape_paths: [/ae, /ae/women, /ae/men]
+
+  - name: splash
+    display_name: "Splash Fashions"
+    url: "https://www.splashfashions.com"
+    region: uae
+    type: retailer
+    scrape_paths: [/, /women, /men]
+
+  - name: sivvi
+    display_name: "Sivvi"
+    url: "https://www.sivvi.com"
+    region: uae
+    type: retailer
+    scrape_paths: [/, /women, /men]
+
+  - name: styli
+    display_name: "Styli"
+    url: "https://en-ae.styli.com"
+    region: uae
+    type: retailer
+    scrape_paths: [/, /women, /men]
+
+  - name: vogacloset
+    display_name: "VogaCloset"
+    url: "https://www.vogacloset.com"
+    region: uae
+    type: retailer
+    scrape_paths: [/, /women, /men]
+
+  - name: centrepoint
+    display_name: "Centrepoint"
+    url: "https://www.centrepoint.com"
+    region: uae
+    type: retailer
+    scrape_paths: [/, /women, /men, /kids]
+
+  - name: sauce_shop
+    display_name: "Sauce"
+    url: "https://www.sauce.ae"
+    region: uae
+    type: retailer
+    scrape_paths: [/, /women, /men]
+
+  - name: khaadi_uae
+    display_name: "Khaadi UAE"
+    url: "https://khaadi.com/ae"
+    region: uae
+    type: retailer
+    scrape_paths: [/, /women, /men]
+
+  - name: brands_for_less
+    display_name: "Brands For Less"
+    url: "https://www.brandsforless.com"
+    region: uae
+    type: retailer
+    scrape_paths: [/, /women, /men]
+
+  - name: hm_uae
+    display_name: "H&M UAE"
+    url: "https://www2.hm.com/en_ae"
+    region: uae
+    type: retailer
+    scrape_paths: [/, /ladies, /men, /kids]
+
+  - name: zara_uae
+    display_name: "Zara UAE"
+    url: "https://www.zara.com/ae"
+    region: uae
+    type: retailer
+    scrape_paths: [/, /woman, /man]
+
+  - name: new_look_me
+    display_name: "New Look ME"
+    url: "https://www.newlook.com/ae"
+    region: uae
+    type: retailer
+    scrape_paths: [/, /women, /men]
+
+  - name: forever21_uae
+    display_name: "Forever 21 UAE"
+    url: "https://www.forever21.ae"
+    region: uae
+    type: retailer
+    scrape_paths: [/, /women, /men]
+
+  - name: mango_uae
+    display_name: "Mango UAE"
+    url: "https://shop.mango.com/ae"
+    region: uae
+    type: retailer
+    scrape_paths: [/, /woman, /man]
+
+  - name: cotton_on_uae
+    display_name: "Cotton On UAE"
+    url: "https://cottonon.com/AE"
+    region: uae
+    type: retailer
+    scrape_paths: [/, /women, /men]
+
+  - name: defacto_uae
+    display_name: "DeFacto UAE"
+    url: "https://www.defacto.com.tr/ae"
+    region: uae
+    type: retailer
+    scrape_paths: [/]
+
+  - name: lifestyle_uae
+    display_name: "Lifestyle Stores UAE"
+    url: "https://www.lifestylestores.com/ae"
+    region: uae
+    type: retailer
+    scrape_paths: [/, /women, /men]
+
+  - name: redtag
+    display_name: "Redtag"
+    url: "https://www.redtag.ae"
+    region: uae
+    type: retailer
+    scrape_paths: [/, /women, /men]
+
+  # ── Global — Mid-Size / Online-First Retailers ────────────────────────────
+  - name: asos
+    display_name: "ASOS"
+    url: "https://www.asos.com"
+    region: global
+    type: retailer
+    scrape_paths: [/, /women, /men]
+
+  - name: boohoo
+    display_name: "Boohoo"
+    url: "https://www.boohoo.com"
+    region: global
+    type: retailer
+    scrape_paths: [/, /womens, /mens]
+
+  - name: pretty_little_thing
+    display_name: "PrettyLittleThing"
+    url: "https://www.prettylittlething.com"
+    region: global
+    type: retailer
+    scrape_paths: [/, /womens-clothing]
+
+  - name: fashion_nova
+    display_name: "Fashion Nova"
+    url: "https://www.fashionnova.com"
+    region: global
+    type: retailer
+    scrape_paths: [/, /collections/womens-clothing, /collections/mens-clothing]
+
+  - name: revolve
+    display_name: "Revolve"
+    url: "https://www.revolve.com"
+    region: global
+    type: retailer
+    scrape_paths: [/, /r/womens, /r/mens]
+
+  - name: ssense
+    display_name: "SSENSE"
+    url: "https://www.ssense.com"
+    region: global
+    type: retailer
+    scrape_paths: [/, /en-us/women, /en-us/men]
+
+  - name: na_kd
+    display_name: "NA-KD"
+    url: "https://www.na-kd.com"
+    region: global
+    type: retailer
+    scrape_paths: [/, /en, /en/new-arrivals]
+
+  - name: cos
+    display_name: "COS"
+    url: "https://www.cos.com"
+    region: global
+    type: retailer
+    scrape_paths: [/, /en-gbp/women, /en-gbp/men]
+
+  - name: mango_global
+    display_name: "Mango"
+    url: "https://shop.mango.com/gb"
+    region: global
+    type: retailer
+    scrape_paths: [/, /woman, /man]
+
+  - name: uniqlo
+    display_name: "Uniqlo"
+    url: "https://www.uniqlo.com/uk"
+    region: global
+    type: retailer
+    scrape_paths: [/, /en/feature/women, /en/feature/men]
+
+  - name: reiss
+    display_name: "Reiss"
+    url: "https://www.reiss.com"
+    region: global
+    type: retailer
+    scrape_paths: [/, /womens, /mens]
+
+  - name: wolf_badger
+    display_name: "Wolf & Badger"
+    url: "https://www.wolfandbadger.com"
+    region: global
+    type: retailer
+    scrape_paths: [/, /women, /men]
+
+  - name: depop
+    display_name: "Depop"
+    url: "https://www.depop.com"
+    region: global
+    type: retailer
+    scrape_paths: [/]
+
+  - name: missguided
+    display_name: "Missguided"
+    url: "https://www.missguided.co.uk"
+    region: global
+    type: retailer
+    scrape_paths: [/, /womens-clothing]
+
+  - name: shein_global
+    display_name: "SHEIN"
+    url: "https://www.shein.com"
+    region: global
+    type: retailer
+    scrape_paths: [/, /Women-New-In-sc-00869227.html]
+
+  - name: mytheresa
+    display_name: "Mytheresa"
+    url: "https://www.mytheresa.com"
+    region: global
+    type: retailer
+    scrape_paths: [/, /en-de/women, /en-de/men]
+
+  - name: matches_fashion
+    display_name: "Matches Fashion"
+    url: "https://www.matchesfashion.com"
+    region: global
+    type: retailer
+    scrape_paths: [/, /womens, /mens]
+
+  - name: vestiaire
+    display_name: "Vestiaire Collective"
+    url: "https://www.vestiairecollective.com"
+    region: global
+    type: retailer
+    scrape_paths: [/, /women, /men]
+
+  - name: about_you
+    display_name: "About You"
+    url: "https://en.aboutyou.com"
+    region: global
+    type: retailer
+    scrape_paths: [/, /women, /men]
+
+  - name: zalando
+    display_name: "Zalando"
+    url: "https://www.zalando.co.uk"
+    region: global
+    type: retailer
+    scrape_paths: [/, /womens-clothing, /mens-clothing]
+
+  - name: urban_outfitters
+    display_name: "Urban Outfitters"
+    url: "https://www.urbanoutfitters.com"
+    region: global
+    type: retailer
+    scrape_paths: [/, /womens-clothing, /mens-clothing]
+
+  - name: anthropologie
+    display_name: "Anthropologie"
+    url: "https://www.anthropologie.com"
+    region: global
+    type: retailer
+    scrape_paths: [/, /clothing]
+
+  - name: free_people
+    display_name: "Free People"
+    url: "https://www.freepeople.com"
+    region: global
+    type: retailer
+    scrape_paths: [/, /womens-clothing, /mens]

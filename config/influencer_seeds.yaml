@@ -1,0 +1,399 @@
+influencer_seeds:
+  # ── India — Fashion Influencers ──────────────────────────────────────────
+  - handle: masoom_minawala
+    name: "Masoom Minawala"
+    platform: instagram
+    followers: 1400000
+    niche: [luxury fashion, ethnic wear, bridal]
+    region: india
+    bio: "Forbes 30 under 30, luxury fashion blogger"
+    profile_url: "https://www.instagram.com/masoom_minawala/"
+
+  - handle: komal_pandey
+    name: "Komal Pandey"
+    platform: instagram
+    followers: 1400000
+    niche: [street style, western wear, ootd]
+    region: india
+    bio: "Fashion content creator, street style"
+    profile_url: "https://www.instagram.com/komal_pandey/"
+
+  - handle: kritika_khurana
+    name: "Kritika Khurana"
+    platform: instagram
+    followers: 1300000
+    niche: [boho, western wear, lifestyle]
+    region: india
+    bio: "That Boho Girl - fashion and lifestyle"
+    profile_url: "https://www.instagram.com/kritika_khurana/"
+
+  - handle: sejal_kumar
+    name: "Sejal Kumar"
+    platform: instagram
+    followers: 1000000
+    niche: [youth fashion, college style, DIY]
+    region: india
+    bio: "Youtuber turned Instagram fashion creator"
+    profile_url: "https://www.instagram.com/sejal_kumar/"
+
+  - handle: aashna_shroff
+    name: "Aashna Shroff"
+    platform: instagram
+    followers: 900000
+    niche: [minimalist fashion, travel, lifestyle]
+    region: india
+    bio: "Fashion and lifestyle creator"
+    profile_url: "https://www.instagram.com/aashna_shroff/"
+
+  - handle: malvika_sheth
+    name: "Malvika Sheth"
+    platform: instagram
+    followers: 700000
+    niche: [colorful fashion, ootd, indo-western]
+    region: india
+    bio: "Bold and colorful fashion creator"
+    profile_url: "https://www.instagram.com/malvika_sheth/"
+
+  - handle: ootdfashion_
+    name: "Shreya Jain"
+    platform: instagram
+    followers: 650000
+    niche: [ethnic wear, fusion fashion, bridal]
+    region: india
+    bio: "Indian fashion blogger"
+    profile_url: "https://www.instagram.com/ootdfashion_/"
+
+  - handle: perniaqureshi
+    name: "Pernia Qureshi"
+    platform: instagram
+    followers: 620000
+    niche: [luxury fashion, designer wear, bridal]
+    region: india
+    bio: "Founder Pernia's Pop-Up Shop, fashion icon"
+    profile_url: "https://www.instagram.com/perniaqureshi/"
+
+  - handle: stylebyami
+    name: "Ami Patel"
+    platform: instagram
+    followers: 580000
+    niche: [celebrity styling, luxury, red carpet]
+    region: india
+    bio: "Celebrity fashion stylist"
+    profile_url: "https://www.instagram.com/stylebyami/"
+
+  - handle: dollysingh
+    name: "Dolly Singh"
+    platform: instagram
+    followers: 550000
+    niche: [humour, fashion, ootd]
+    region: india
+    bio: "Content creator, fashion and comedy"
+    profile_url: "https://www.instagram.com/dollysingh/"
+
+  - handle: wanderingiyer
+    name: "Riya Jain"
+    platform: instagram
+    followers: 500000
+    niche: [ethnic wear, travel fashion, sarees]
+    region: india
+    bio: "Travel and fashion blogger"
+    profile_url: "https://www.instagram.com/wanderingiyer/"
+
+  - handle: nagmamirajkar
+    name: "Nagma Mirajkar"
+    platform: instagram
+    followers: 4800000
+    niche: [trendy fashion, youth, reels]
+    region: india
+    bio: "Fashion and lifestyle content creator"
+    profile_url: "https://www.instagram.com/nagmamirajkar/"
+
+  - handle: aakritiosawal
+    name: "Aakruti Oswal"
+    platform: instagram
+    followers: 470000
+    niche: [ethnic wear, fusion fashion, jewellery]
+    region: india
+    bio: "Indian fashion and lifestyle blogger"
+    profile_url: "https://www.instagram.com/aakritiosawal/"
+
+  - handle: anishadixit
+    name: "Anisha Dixit"
+    platform: instagram
+    followers: 430000
+    niche: [quirky fashion, youth, DIY styling]
+    region: india
+    bio: "Actor and fashion content creator"
+    profile_url: "https://www.instagram.com/anishadixit/"
+
+  - handle: thestylesaint
+    name: "Shivani Patil"
+    platform: instagram
+    followers: 400000
+    niche: [minimalist, western wear, workwear]
+    region: india
+    bio: "Minimalist fashion blogger"
+    profile_url: "https://www.instagram.com/thestylesaint/"
+
+  - handle: prernaa_a
+    name: "Prerna Awasthi"
+    platform: instagram
+    followers: 380000
+    niche: [indo-western, ethnic, bridal]
+    region: india
+    bio: "Fashion and lifestyle blogger India"
+    profile_url: "https://www.instagram.com/prernaa_a/"
+
+  - handle: nooranand_
+    name: "Noor Anand Chawla"
+    platform: instagram
+    followers: 350000
+    niche: [sustainable fashion, conscious styling]
+    region: india
+    bio: "Sustainable fashion advocate"
+    profile_url: "https://www.instagram.com/nooranand_/"
+
+  - handle: thebombaylife
+    name: "Aayushi Bangur"
+    platform: instagram
+    followers: 330000
+    niche: [street style, Mumbai fashion, ootd]
+    region: india
+    bio: "Mumbai based fashion blogger"
+    profile_url: "https://www.instagram.com/thebombaylife/"
+
+  - handle: shandana_ellahi
+    name: "Shandana Ellahi"
+    platform: instagram
+    followers: 310000
+    niche: [modest fashion, ethnic wear, Pakistan/India]
+    region: india
+    bio: "Modest fashion blogger"
+    profile_url: "https://www.instagram.com/shandana_ellahi/"
+
+  - handle: taranahluwalia
+    name: "Taran Ahluwalia"
+    platform: instagram
+    followers: 290000
+    niche: [luxury fashion, western wear, lifestyle]
+    region: india
+    bio: "Fashion influencer and model"
+    profile_url: "https://www.instagram.com/taranahluwalia/"
+
+  - handle: be_fashionista_
+    name: "Priyanka Bhatt"
+    platform: instagram
+    followers: 270000
+    niche: [budget fashion, indian wear, student style]
+    region: india
+    bio: "Affordable fashion blogger"
+    profile_url: "https://www.instagram.com/be_fashionista_/"
+
+  - handle: shalveenpali
+    name: "Shalveen Pali"
+    platform: instagram
+    followers: 250000
+    niche: [plus size fashion, body positive, ootd]
+    region: india
+    bio: "Plus size fashion influencer India"
+    profile_url: "https://www.instagram.com/shalveenpali/"
+
+  - handle: devanshijewels
+    name: "Devanshi Shah"
+    platform: instagram
+    followers: 240000
+    niche: [jewellery, ethnic fashion, bridal]
+    region: india
+    bio: "Jewellery and ethnic fashion creator"
+    profile_url: "https://www.instagram.com/devanshijewels/"
+
+  - handle: thebudgetfashionista_
+    name: "Priya Sachdeva"
+    platform: instagram
+    followers: 220000
+    niche: [budget fashion, deals, college style]
+    region: india
+    bio: "Affordable fashion tips and styling"
+    profile_url: "https://www.instagram.com/thebudgetfashionista_/"
+
+  - handle: fashionandbeautybypriya
+    name: "Priya Gupta"
+    platform: instagram
+    followers: 200000
+    niche: [ethnic wear, beauty, lifestyle]
+    region: india
+    bio: "Fashion beauty and lifestyle blogger"
+    profile_url: "https://www.instagram.com/fashionandbeautybypriya/"
+
+  # ── UAE / Middle East — Fashion Influencers ──────────────────────────────
+  - handle: ascia
+    name: "Ascia Al Faraj"
+    platform: instagram
+    followers: 2200000
+    niche: [modest fashion, luxury, lifestyle]
+    region: uae
+    bio: "Kuwaiti fashion icon, modest fashion pioneer"
+    profile_url: "https://www.instagram.com/ascia/"
+
+  - handle: joelletamraz
+    name: "Joelle Mardinian"
+    platform: instagram
+    followers: 5100000
+    niche: [luxury fashion, beauty, lifestyle]
+    region: uae
+    bio: "Lebanese beauty and fashion icon in UAE"
+    profile_url: "https://www.instagram.com/joelletamraz/"
+
+  - handle: nadine_njeim
+    name: "Nadine Njeim"
+    platform: instagram
+    followers: 6400000
+    niche: [luxury fashion, beauty, red carpet]
+    region: uae
+    bio: "Lebanese-UAE model and fashion influencer"
+    profile_url: "https://www.instagram.com/nadine_njeim/"
+
+  - handle: meganmustoe
+    name: "Megan Mustoe"
+    platform: instagram
+    followers: 380000
+    niche: [modest fashion, UAE lifestyle, fashion weeks]
+    region: uae
+    bio: "Dubai-based fashion blogger"
+    profile_url: "https://www.instagram.com/meganmustoe/"
+
+  - handle: mayadiab
+    name: "Maya Diab"
+    platform: instagram
+    followers: 2700000
+    niche: [luxury fashion, beauty, entertainment]
+    region: uae
+    bio: "Lebanese singer and fashion icon"
+    profile_url: "https://www.instagram.com/mayadiab/"
+
+  - handle: rimal_ali_official
+    name: "Rimal Ali"
+    platform: instagram
+    followers: 420000
+    niche: [modest fashion, Arab fashion, lifestyle]
+    region: uae
+    bio: "UAE modest fashion influencer"
+    profile_url: "https://www.instagram.com/rimal_ali_official/"
+
+  - handle: lvagabonde
+    name: "Laura Eguizabal"
+    platform: instagram
+    followers: 360000
+    niche: [luxury fashion, travel, Dubai lifestyle]
+    region: uae
+    bio: "Dubai based luxury fashion and travel blogger"
+    profile_url: "https://www.instagram.com/lvagabonde/"
+
+  - handle: amirafathallah
+    name: "Amira Fathallah"
+    platform: instagram
+    followers: 340000
+    niche: [modest fashion, Arab fashion, lifestyle]
+    region: uae
+    bio: "UAE modest fashion and lifestyle blogger"
+    profile_url: "https://www.instagram.com/amirafathallah/"
+
+  - handle: themodistuae
+    name: "The Modist UAE"
+    platform: instagram
+    followers: 310000
+    niche: [modest fashion, luxury, curated style]
+    region: uae
+    bio: "Modest luxury fashion platform"
+    profile_url: "https://www.instagram.com/themodistuae/"
+
+  - handle: raya_abirached
+    name: "Raya Abirached"
+    platform: instagram
+    followers: 2900000
+    niche: [luxury fashion, TV, entertainment]
+    region: uae
+    bio: "Lebanese TV host and fashion icon in UAE"
+    profile_url: "https://www.instagram.com/raya_abirached/"
+
+  - handle: zahraalamiri
+    name: "Zahraa Al Amiri"
+    platform: instagram
+    followers: 290000
+    niche: [modest fashion, Arab fashion, lifestyle]
+    region: uae
+    bio: "UAE fashion and lifestyle influencer"
+    profile_url: "https://www.instagram.com/zahraalamiri/"
+
+  - handle: daniaoualhabi
+    name: "Dania Oualhabi"
+    platform: instagram
+    followers: 270000
+    niche: [modest fashion, hijab style, lifestyle]
+    region: uae
+    bio: "Modest fashion blogger in UAE"
+    profile_url: "https://www.instagram.com/daniaoualhabi/"
+
+  - handle: lollytalks
+    name: "Lolwa Al Thani"
+    platform: instagram
+    followers: 250000
+    niche: [luxury fashion, Qatar/UAE lifestyle]
+    region: uae
+    bio: "Gulf region fashion and lifestyle blogger"
+    profile_url: "https://www.instagram.com/lollytalks/"
+
+  # ── Global — Fashion Influencers ─────────────────────────────────────────
+  - handle: chrisellelim
+    name: "Chriselle Lim"
+    platform: instagram
+    followers: 1300000
+    niche: [luxury fashion, Korean-American, lifestyle]
+    region: global
+    bio: "Fashion blogger and entrepreneur"
+    profile_url: "https://www.instagram.com/chrisellelim/"
+
+  - handle: aimeeesong
+    name: "Aimee Song"
+    platform: instagram
+    followers: 7200000
+    niche: [luxury fashion, interior design, lifestyle]
+    region: global
+    bio: "Song of Style - fashion and interior blogger"
+    profile_url: "https://www.instagram.com/aimeeesong/"
+
+  - handle: denisemmercedes
+    name: "Denise Mercedes"
+    platform: instagram
+    followers: 1100000
+    niche: [plus size fashion, body positive, style]
+    region: global
+    bio: "Plus size fashion and body positivity"
+    profile_url: "https://www.instagram.com/denisemmercedes/"
+
+  - handle: nicolettemason
+    name: "Nicolette Mason"
+    platform: instagram
+    followers: 280000
+    niche: [plus size fashion, inclusive style]
+    region: global
+    bio: "Plus size fashion influencer"
+    profile_url: "https://www.instagram.com/nicolettemason/"
+
+  - handle: leandramcohen
+    name: "Leandra Medine Cohen"
+    platform: instagram
+    followers: 850000
+    niche: [avant-garde fashion, editorial, lifestyle]
+    region: global
+    bio: "Founder Man Repeller, fashion writer"
+    profile_url: "https://www.instagram.com/leandramcohen/"
+
+  - handle: gypsylovinlight
+    name: "Nessa Borges"
+    platform: instagram
+    followers: 410000
+    niche: [boho fashion, sustainable, lifestyle]
+    region: global
+    bio: "Bohemian fashion and sustainable lifestyle"
+    profile_url: "https://www.instagram.com/gypsylovinlight/"

@@ -52,6 +52,9 @@ class PlatformScraper(BaseScraper):
                 tech_hints=extracted.get("tech_hints") or [],
                 categories=[],
                 sample_products=[],
+                social_links=extracted.get("social_links") or {},
+                has_newsletter=bool(extracted.get("has_newsletter", False)),
+                ad_tech=extracted.get("ad_tech") or [],
             )
 
         # Fallback: regex extraction
