@@ -97,7 +97,7 @@ class Database:
 
     async def init(self):
         db_url = self.db_url.replace("postgres://", "postgresql://", 1)
-        logger.info("Connecting to DB: %s", db_url.split("@")[-1])
+        logger.warning("Connecting to DB host: %s", db_url.split("@")[-1] if "@" in db_url else db_url)
         for attempt in range(1, 6):
             try:
                 self._pool = await asyncpg.create_pool(db_url, min_size=1, max_size=5)
