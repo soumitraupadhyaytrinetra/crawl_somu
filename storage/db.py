@@ -92,7 +92,8 @@ class Database:
         self._pool = None
 
     async def init(self):
-        self._pool = await asyncpg.create_pool(self.db_url, min_size=1, max_size=5)
+        db_url = self.db_url.replace("postgres://", "postgresql://", 1)
+        self._pool = await asyncpg.create_pool(db_url, min_size=1, max_size=5)
         async with self._pool.acquire() as conn:
             await conn.execute(CREATE_COMPETITORS)
             await conn.execute(CREATE_INFLUENCERS)
