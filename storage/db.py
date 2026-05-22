@@ -1,8 +1,12 @@
+import asyncio
 import json
+import logging
 import os
 from datetime import datetime, date
 
 import asyncpg
+
+logger = logging.getLogger(__name__)
 
 from scrapers.models import CompetitorData, EventData, InfluencerData
 
@@ -93,7 +97,17 @@ class Database:
 
     async def init(self):
         db_url = self.db_url.replace("postgres://", "postgresql://", 1)
-        self._pool = await asyncpg.create_pool(db_url, min_size=1, max_size=5)
+        logger.info("Connecting to DB: %s", db_url.split("@")[-1])
+        for attempt in range(1, 6):
+            try:
+                self._pool = await asyncpg.create_pool(db_url, min_size=1, max_size=5)
+                logger.info("DB pool created on attempt %d", attempt)
+                break
+            except Exception as e:
+                logger.warning("DB connect attempt %d failed: %s", attempt, e)
+                if attempt == 5:
+                    raise
+                await asyncio.sleep(attempt * 2)
         async with self._pool.acquire() as conn:
             await conn.execute(CREATE_COMPETITORS)
             await conn.execute(CREATE_INFLUENCERS)
