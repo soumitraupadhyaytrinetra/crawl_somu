@@ -90,13 +90,13 @@ async def _run_scrape(section: str, job_id: str) -> None:
     flag = f"--only-{section}"
     try:
         proc = await asyncio.create_subprocess_exec(
-            sys.executable, str(MAIN_PY), "--run-now", flag,
+            sys.executable, str(MAIN_PY), "--run-now", flag, "--max-sources", "10",
             cwd=str(PROJECT_ROOT),
             stdout=asyncio.subprocess.PIPE,
             stderr=asyncio.subprocess.PIPE,
         )
         try:
-            _stdout, stderr = await asyncio.wait_for(proc.communicate(), timeout=300)
+            _stdout, stderr = await asyncio.wait_for(proc.communicate(), timeout=600)
         except asyncio.TimeoutError:
             proc.kill()
             _jobs[job_id] = {"status": "error", "message": "Scrape timed out after 5 minutes"}

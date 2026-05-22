@@ -86,7 +86,8 @@ async def scrape_event_source(source: dict):
 
 
 async def run_all(target: str | None = None, skip_competitors: bool = False,
-                  skip_influencers: bool = False, skip_events: bool = False):
+                  skip_influencers: bool = False, skip_events: bool = False,
+                  max_sources: int | None = None):
     from storage.db import Database
     from storage.exporter import Exporter
 
@@ -106,6 +107,8 @@ async def run_all(target: str | None = None, skip_competitors: bool = False,
             competitors = [c for c in competitors if c["name"] == target]
             if not competitors:
                 logger.error("Competitor %r not found in config", target)
+        if max_sources:
+            competitors = competitors[:max_sources]
 
         async def bounded_competitor(comp):
             async with semaphore:
@@ -182,6 +185,8 @@ async def run_all(target: str | None = None, skip_competitors: bool = False,
     # ── Events ─────────────────────────────────────────────────────────────
     if not skip_events:
         event_sources = load_event_sources()
+        if max_sources:
+            event_sources = event_sources[:max_sources]
         if event_sources:
             async def bounded_event(src):
                 async with semaphore:
@@ -252,6 +257,7 @@ def main():
     parser.add_argument("--only-competitors", action="store_true", help="Skip influencers and events")
     parser.add_argument("--only-influencers", action="store_true", help="Skip competitors and events")
     parser.add_argument("--only-events", action="store_true", help="Skip competitors and influencers")
+    parser.add_argument("--max-sources", type=int, default=None, help="Limit number of sources per section")
 
     args = parser.parse_args()
 
@@ -265,6 +271,7 @@ def main():
             skip_competitors=skip_competitors,
             skip_influencers=skip_influencers,
             skip_events=skip_events,
+            max_sources=args.max_sources,
         ))
     elif args.schedule:
         from scheduler.scheduler import start_scheduler
