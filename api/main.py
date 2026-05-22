@@ -90,7 +90,7 @@ async def _run_scrape(section: str, job_id: str) -> None:
     flag = f"--only-{section}"
     try:
         proc = await asyncio.create_subprocess_exec(
-            sys.executable, str(MAIN_PY), "--run-now", flag, "--max-sources", "10",
+            sys.executable, str(MAIN_PY), "--run-now", flag,
             cwd=str(PROJECT_ROOT),
             stdout=asyncio.subprocess.PIPE,
             stderr=asyncio.subprocess.PIPE,
