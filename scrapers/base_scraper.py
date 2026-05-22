@@ -4,12 +4,18 @@ import os
 import re as _re
 from datetime import datetime
 
-from crawl4ai import AsyncWebCrawler, CrawlerRunConfig
+import html2text
+import httpx
 from dotenv import load_dotenv
 
 from scrapers.models import CompetitorData, SampleProduct
 
 load_dotenv()
+
+_h2t = html2text.HTML2Text()
+_h2t.ignore_links = False
+_h2t.ignore_images = True
+_h2t.body_width = 0
 
 logger = logging.getLogger(__name__)
 
@@ -85,34 +91,21 @@ class BaseScraper:
         self.max_retries = 3
 
     async def fetch(self, url: str) -> str | None:
-        config = CrawlerRunConfig(
-            user_agent=self.user_agent,
-            wait_for_timeout=5000,
-        )
+        headers = {"User-Agent": self.user_agent}
         for attempt in range(self.max_retries):
             try:
-                async with AsyncWebCrawler() as crawler:
-                    result = await crawler.arun(url=url, config=config)
-                    if result.success:
-                        # crawl4ai 0.8.x: result.markdown is a MarkdownGenerationResult
-                        # object with a raw_markdown field; use raw_markdown for plain str.
-                        md = result.markdown
-                        if hasattr(md, "raw_markdown"):
-                            return md.raw_markdown
-                        return str(md) if md is not None else None
-                    logger.warning(
-                        "Fetch failed %s attempt %d: %s",
-                        url,
-                        attempt + 1,
-                        result.error_message,
-                    )
+                async with httpx.AsyncClient(timeout=30, follow_redirects=True) as client:
+                    resp = await client.get(url, headers=headers)
+                    if resp.status_code == 200:
+                        ct = resp.headers.get("content-type", "")
+                        if "html" in ct:
+                            return _h2t.handle(resp.text)
+                        return resp.text
+                    logger.warning("Fetch %s attempt %d status %d", url, attempt + 1, resp.status_code)
             except Exception as e:
-                logger.warning(
-                    "Exception fetching %s attempt %d: %s", url, attempt + 1, e
-                )
+                logger.warning("Exception fetching %s attempt %d: %s", url, attempt + 1, e)
             if attempt < self.max_retries - 1:
-                backoff = (2 ** attempt) * (self.delay_ms / 1000)
-                await asyncio.sleep(backoff)
+                await asyncio.sleep((2 ** attempt) * (self.delay_ms / 1000))
         return None
 
     async def scrape(self, competitor: dict) -> CompetitorData | None:
