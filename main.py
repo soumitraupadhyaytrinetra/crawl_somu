@@ -131,10 +131,12 @@ async def run_all(target: str | None = None, skip_competitors: bool = False,
             # Clear old mixed data so only Apify results remain
             await db.clear_influencers()
 
-            all_inf: list = []
-            for region in ["india", "uae", "global"]:
-                discovered = await apify.discover_influencers(region)
-                all_inf.extend(discovered)
+            region_results = await asyncio.gather(
+                apify.discover_influencers("india"),
+                apify.discover_influencers("uae"),
+                apify.discover_influencers("global"),
+            )
+            all_inf: list = [inf for r in region_results for inf in r]
 
             for inf in all_inf:
                 try:

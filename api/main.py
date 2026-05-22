@@ -95,7 +95,13 @@ async def _run_scrape(section: str, job_id: str) -> None:
             stdout=asyncio.subprocess.PIPE,
             stderr=asyncio.subprocess.PIPE,
         )
-        _stdout, stderr = await proc.communicate()
+        try:
+            _stdout, stderr = await asyncio.wait_for(proc.communicate(), timeout=300)
+        except asyncio.TimeoutError:
+            proc.kill()
+            _jobs[job_id] = {"status": "error", "message": "Scrape timed out after 5 minutes"}
+            asyncio.get_event_loop().call_later(60, _jobs.pop, job_id, None)
+            return
         if proc.returncode == 0:
             _jobs[job_id] = {"status": "done", "message": f"{section.capitalize()} scraped successfully"}
             asyncio.get_event_loop().call_later(60, _jobs.pop, job_id, None)

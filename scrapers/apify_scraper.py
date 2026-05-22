@@ -19,38 +19,17 @@ _DISCOVERY_QUERIES = {
     "india": [
         "indian fashion blogger",
         "ethnic wear india influencer",
-        "indian style blogger",
-        "bollywood fashion india",
-        "kurti saree fashion blogger",
-        "india ootd fashion",
         "desi fashion influencer",
-        "indian outfit blogger",
-        "delhi fashion blogger",
-        "mumbai fashion influencer",
-        "bangalore fashion blogger",
-        "india western wear blogger",
-        "indo western fashion",
-        "saree blogger india",
     ],
     "uae": [
         "dubai fashion blogger",
         "modest fashion uae",
-        "arab fashion influencer",
-        "dubai style influencer",
-        "uae fashion blogger",
-        "abu dhabi fashion influencer",
         "hijab fashion blogger",
-        "middle east fashion influencer",
-        "gulf fashion blogger",
     ],
     "global": [
         "fashion influencer ootd",
-        "style blogger fashion",
-        "sustainable fashion influencer",
-        "plus size fashion blogger",
         "luxury fashion influencer",
-        "streetwear fashion blogger",
-        "minimalist fashion blogger",
+        "sustainable fashion influencer",
     ],
 }
 
@@ -171,7 +150,7 @@ class ApifyScraper:
                 "resultsLimit": 50,
             }
             logger.info("Apify discover '%s' (region=%s)", query, region)
-            items = await self._call(payload, timeout=120)
+            items = await self._call(payload, timeout=60)
             for item in items:
                 inf = _parse_item(item, region)
                 if inf and inf.handle not in seen_handles:
