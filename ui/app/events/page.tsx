@@ -100,7 +100,6 @@ export default function EventsPage() {
     }
   }
 
-  const upcomingCount = data.filter(e => !e.start_date || e.start_date >= today).length
   const pastCount = data.filter(e => e.start_date && e.start_date < today).length
 
   const topicBtnClass = {
