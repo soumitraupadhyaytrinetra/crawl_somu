@@ -91,17 +91,18 @@ class BaseScraper:
         self.max_retries = 3
 
     async def fetch(self, url: str) -> str | None:
-        headers = {"User-Agent": self.user_agent}
+        jina_url = f"https://r.jina.ai/{url}"
+        jina_key = os.getenv("JINA_API_KEY")
+        headers = {"Accept": "text/markdown", "User-Agent": self.user_agent}
+        if jina_key:
+            headers["Authorization"] = f"Bearer {jina_key}"
         for attempt in range(self.max_retries):
             try:
-                async with httpx.AsyncClient(timeout=30, follow_redirects=True) as client:
-                    resp = await client.get(url, headers=headers)
-                    if resp.status_code == 200:
-                        ct = resp.headers.get("content-type", "")
-                        if "html" in ct:
-                            return _h2t.handle(resp.text)
+                async with httpx.AsyncClient(timeout=45, follow_redirects=True) as client:
+                    resp = await client.get(jina_url, headers=headers)
+                    if resp.status_code == 200 and resp.text.strip():
                         return resp.text
-                    logger.warning("Fetch %s attempt %d status %d", url, attempt + 1, resp.status_code)
+                    logger.warning("Jina fetch %s attempt %d status %d", url, attempt + 1, resp.status_code)
             except Exception as e:
                 logger.warning("Exception fetching %s attempt %d: %s", url, attempt + 1, e)
             if attempt < self.max_retries - 1:

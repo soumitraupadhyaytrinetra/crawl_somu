@@ -85,9 +85,23 @@ async def scrape_event_source(source: dict):
         return []
 
 
+def _build_topic_event_sources(topic: str) -> list[dict]:
+    slug = topic.lower().replace(" ", "-")
+    encoded = topic.lower().replace(" ", "+")
+    return [
+        {"name": f"10times_{slug}", "url": f"https://10times.com/{slug}", "region": "global", "scrape_paths": ["/"]},
+        {"name": f"10times_{slug}_india", "url": f"https://10times.com/{slug}/india", "region": "india", "scrape_paths": ["/"]},
+        {"name": f"10times_{slug}_uae", "url": f"https://10times.com/{slug}/united-arab-emirates", "region": "uae", "scrape_paths": ["/"]},
+        {"name": f"eventbrite_{slug}", "url": f"https://www.eventbrite.com/d/online/{slug}/", "region": "global", "scrape_paths": ["/"]},
+        {"name": f"eventbrite_{slug}_india", "url": f"https://www.eventbrite.com/d/india/{slug}/", "region": "india", "scrape_paths": ["/"]},
+        {"name": f"biztrade_{slug}", "url": f"https://www.biztradeshows.com/search/?q={encoded}", "region": "global", "scrape_paths": ["/"]},
+        {"name": f"eventseye_{slug}", "url": f"https://www.eventseye.com/fairs/search.html?q={encoded}", "region": "global", "scrape_paths": ["/"]},
+    ]
+
+
 async def run_all(target: str | None = None, skip_competitors: bool = False,
                   skip_influencers: bool = False, skip_events: bool = False,
-                  max_sources: int | None = None):
+                  max_sources: int | None = None, topic_events: str | None = None):
     from storage.db import Database
     from storage.exporter import Exporter
 
@@ -184,9 +198,13 @@ async def run_all(target: str | None = None, skip_competitors: bool = False,
 
     # ── Events ─────────────────────────────────────────────────────────────
     if not skip_events:
-        event_sources = load_event_sources()
-        if max_sources:
-            event_sources = event_sources[:max_sources]
+        if topic_events:
+            event_sources = _build_topic_event_sources(topic_events)
+            logger.info("Topic scrape '%s': %d sources", topic_events, len(event_sources))
+        else:
+            event_sources = load_event_sources()
+            if max_sources:
+                event_sources = event_sources[:max_sources]
         if event_sources:
             async def bounded_event(src):
                 async with semaphore:
@@ -258,6 +276,7 @@ def main():
     parser.add_argument("--only-influencers", action="store_true", help="Skip competitors and events")
     parser.add_argument("--only-events", action="store_true", help="Skip competitors and influencers")
     parser.add_argument("--max-sources", type=int, default=None, help="Limit number of sources per section")
+    parser.add_argument("--topic-events", type=str, default=None, help="Scrape events for a specific topic/category")
 
     args = parser.parse_args()
 
@@ -272,6 +291,7 @@ def main():
             skip_influencers=skip_influencers,
             skip_events=skip_events,
             max_sources=args.max_sources,
+            topic_events=args.topic_events,
         ))
     elif args.schedule:
         from scheduler.scheduler import start_scheduler

@@ -114,6 +114,42 @@ async def _run_scrape(section: str, job_id: str) -> None:
         asyncio.get_event_loop().call_later(60, _jobs.pop, job_id, None)
 
 
+@app.post("/api/scrape/events/topic")
+async def start_topic_scrape(topic: str = Query(...)):
+    job_id = str(uuid.uuid4())
+    _jobs[job_id] = {"status": "running", "message": f"Searching '{topic}' events..."}
+    asyncio.create_task(_run_topic_scrape(topic, job_id))
+    return {"job_id": job_id}
+
+
+async def _run_topic_scrape(topic: str, job_id: str) -> None:
+    _jobs[job_id] = {"status": "running", "message": f"Scraping '{topic}' events..."}
+    try:
+        proc = await asyncio.create_subprocess_exec(
+            sys.executable, str(MAIN_PY), "--run-now", "--only-events", "--topic-events", topic,
+            cwd=str(PROJECT_ROOT),
+            stdout=asyncio.subprocess.PIPE,
+            stderr=asyncio.subprocess.PIPE,
+        )
+        try:
+            _stdout, stderr = await asyncio.wait_for(proc.communicate(), timeout=600)
+        except asyncio.TimeoutError:
+            proc.kill()
+            _jobs[job_id] = {"status": "error", "message": "Topic scrape timed out"}
+            asyncio.get_event_loop().call_later(60, _jobs.pop, job_id, None)
+            return
+        if proc.returncode == 0:
+            _jobs[job_id] = {"status": "done", "message": f"'{topic}' events scraped"}
+            asyncio.get_event_loop().call_later(60, _jobs.pop, job_id, None)
+        else:
+            err = stderr.decode(errors="replace")[-500:]
+            _jobs[job_id] = {"status": "error", "message": err}
+            asyncio.get_event_loop().call_later(60, _jobs.pop, job_id, None)
+    except Exception as e:
+        _jobs[job_id] = {"status": "error", "message": str(e)}
+        asyncio.get_event_loop().call_later(60, _jobs.pop, job_id, None)
+
+
 @app.post("/api/scrape/{section}")
 async def start_scrape(section: str):
     if section not in ("competitors", "influencers", "events"):

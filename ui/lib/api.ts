@@ -42,6 +42,13 @@ export async function startScrape(section: Section): Promise<ScrapeJobResponse> 
   return res.json()
 }
 
+export async function startTopicScrape(topic: string): Promise<ScrapeJobResponse> {
+  const p = new URLSearchParams({ topic })
+  const res = await fetch(`${BASE}/api/scrape/events/topic?${p}`, { method: 'POST' })
+  if (!res.ok) throw new Error(`Topic scrape start failed: ${res.status}`)
+  return res.json()
+}
+
 export async function pollJobStatus(jobId: string): Promise<JobStatus> {
   const res = await fetch(`${BASE}/api/scrape/status/${jobId}`, { cache: 'no-store' })
   if (!res.ok) throw new Error(`Status fetch failed: ${res.status}`)
