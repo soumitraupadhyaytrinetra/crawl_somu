@@ -8,6 +8,10 @@ import type { Competitor, Region } from '@/lib/types'
 
 type TypeFilter = 'all' | 'platform' | 'retailer'
 
+function safeJson(s: string | null): string[] {
+  try { return JSON.parse(s ?? '[]') } catch { return [] }
+}
+
 const COLUMNS: Column<Competitor>[] = [
   {
     key: 'display_name',
@@ -68,6 +72,7 @@ export default function CompetitorsPage() {
   const [data, setData] = useState<Competitor[]>([])
   const [region, setRegion] = useState<Region>('all')
   const [typeFilter, setTypeFilter] = useState<TypeFilter>('all')
+  const [search, setSearch] = useState('')
 
   const load = () => {
     fetchCompetitors(region, typeFilter !== 'all' ? typeFilter : undefined).then(setData).catch(console.error)
@@ -75,12 +80,27 @@ export default function CompetitorsPage() {
 
   useEffect(() => { load() }, [region, typeFilter])
 
+  const filtered = search.trim()
+    ? data.filter(c => {
+        const q = search.toLowerCase()
+        return (
+          c.name?.toLowerCase().includes(q) ||
+          c.display_name?.toLowerCase().includes(q) ||
+          c.tagline?.toLowerCase().includes(q) ||
+          c.about?.toLowerCase().includes(q) ||
+          c.url?.toLowerCase().includes(q) ||
+          safeJson(c.tech_hints).some(t => t.toLowerCase().includes(q)) ||
+          safeJson(c.categories).some(t => t.toLowerCase().includes(q))
+        )
+      })
+    : data
+
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
         <div>
           <h1 className="text-2xl font-bold">Competitors</h1>
-          <p className="text-slate-400 text-sm mt-1">{data.length} results</p>
+          <p className="text-slate-400 text-sm mt-1">{filtered.length} results</p>
         </div>
         <ScrapeButton section="competitors" onDone={load} />
       </div>
@@ -103,9 +123,16 @@ export default function CompetitorsPage() {
             </button>
           ))}
         </div>
+        <input
+          type="text"
+          value={search}
+          onChange={e => setSearch(e.target.value)}
+          placeholder="Search name, tech, category…"
+          className="ml-auto bg-slate-800 border border-slate-700 text-sm text-white rounded-lg px-3 py-2 w-56 focus:outline-none focus:border-violet-500"
+        />
       </div>
 
-      <DataTable columns={COLUMNS} data={data} />
+      <DataTable columns={COLUMNS} data={filtered} />
     </div>
   )
 }

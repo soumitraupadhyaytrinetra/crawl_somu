@@ -96,7 +96,7 @@ async def _run_scrape(section: str, job_id: str) -> None:
             stderr=asyncio.subprocess.PIPE,
         )
         try:
-            _stdout, stderr = await asyncio.wait_for(proc.communicate(), timeout=600)
+            _stdout, stderr = await asyncio.wait_for(proc.communicate(), timeout=1200)
         except asyncio.TimeoutError:
             proc.kill()
             _jobs[job_id] = {"status": "error", "message": "Scrape timed out after 5 minutes"}
@@ -132,7 +132,7 @@ async def _run_topic_scrape(topic: str, job_id: str) -> None:
             stderr=asyncio.subprocess.PIPE,
         )
         try:
-            _stdout, stderr = await asyncio.wait_for(proc.communicate(), timeout=600)
+            _stdout, stderr = await asyncio.wait_for(proc.communicate(), timeout=1200)
         except asyncio.TimeoutError:
             proc.kill()
             _jobs[job_id] = {"status": "error", "message": "Topic scrape timed out"}
