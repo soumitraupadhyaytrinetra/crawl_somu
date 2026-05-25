@@ -4,18 +4,12 @@ import os
 import re as _re
 from datetime import datetime
 
-import html2text
 import httpx
 from dotenv import load_dotenv
 
 from scrapers.models import CompetitorData, SampleProduct
 
 load_dotenv()
-
-_h2t = html2text.HTML2Text()
-_h2t.ignore_links = False
-_h2t.ignore_images = True
-_h2t.body_width = 0
 
 logger = logging.getLogger(__name__)
 
