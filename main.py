@@ -86,16 +86,16 @@ async def scrape_event_source(source: dict):
 
 
 def _build_topic_event_sources(topic: str) -> list[dict]:
-    slug = topic.lower().replace(" ", "-")
     encoded = topic.lower().replace(" ", "+")
+    q = topic.lower().replace(" ", "%20")
     return [
-        {"name": f"10times_{slug}", "url": f"https://10times.com/{slug}", "region": "global", "scrape_paths": ["/"]},
-        {"name": f"10times_{slug}_india", "url": f"https://10times.com/{slug}/india", "region": "india", "scrape_paths": ["/"]},
-        {"name": f"10times_{slug}_uae", "url": f"https://10times.com/{slug}/united-arab-emirates", "region": "uae", "scrape_paths": ["/"]},
-        {"name": f"eventbrite_{slug}", "url": f"https://www.eventbrite.com/d/online/{slug}/", "region": "global", "scrape_paths": ["/"]},
-        {"name": f"eventbrite_{slug}_india", "url": f"https://www.eventbrite.com/d/india/{slug}/", "region": "india", "scrape_paths": ["/"]},
-        {"name": f"biztrade_{slug}", "url": f"https://www.biztradeshows.com/search/?q={encoded}", "region": "global", "scrape_paths": ["/"]},
-        {"name": f"eventseye_{slug}", "url": f"https://www.eventseye.com/fairs/search.html?q={encoded}", "region": "global", "scrape_paths": ["/"]},
+        {"name": f"10times_topic_{encoded}", "url": f"https://10times.com/events?q={encoded}", "region": "global", "scrape_paths": ["/"]},
+        {"name": f"10times_topic_{encoded}_india", "url": f"https://10times.com/events?q={encoded}&cl=India", "region": "india", "scrape_paths": ["/"]},
+        {"name": f"10times_topic_{encoded}_uae", "url": f"https://10times.com/events?q={encoded}&cl=UAE", "region": "uae", "scrape_paths": ["/"]},
+        {"name": f"eventbrite_topic_{encoded}", "url": f"https://www.eventbrite.com/d/online/{encoded}--events/", "region": "global", "scrape_paths": ["/"]},
+        {"name": f"eventbrite_topic_{encoded}_india", "url": f"https://www.eventbrite.com/d/india/{encoded}--events/", "region": "india", "scrape_paths": ["/"]},
+        {"name": f"eventseye_topic_{encoded}", "url": f"https://www.eventseye.com/fairs/search.html?kw={q}", "region": "global", "scrape_paths": ["/"]},
+        {"name": f"biztrade_topic_{encoded}", "url": f"https://www.biztradeshows.com/trade-events/?keyword={q}", "region": "global", "scrape_paths": ["/"]},
     ]
 
 

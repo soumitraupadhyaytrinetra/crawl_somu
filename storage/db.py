@@ -280,9 +280,14 @@ class Database:
         async with self._pool.acquire() as conn:
             if upcoming_only:
                 today = date.today().isoformat()
+                this_month = today[:7]
                 rows = await conn.fetch(
-                    "SELECT * FROM events WHERE start_date IS NULL OR start_date >= $1 ORDER BY start_date",
-                    today,
+                    """SELECT * FROM events WHERE
+                        start_date IS NULL
+                        OR start_date >= $1
+                        OR (length(start_date) = 7 AND start_date >= $2)
+                       ORDER BY start_date""",
+                    today, this_month,
                 )
             else:
                 rows = await conn.fetch("SELECT * FROM events ORDER BY region, start_date")
