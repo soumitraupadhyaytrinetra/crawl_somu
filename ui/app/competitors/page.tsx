@@ -14,7 +14,10 @@ const COLUMNS: Column<Competitor>[] = [
     label: 'Name',
     render: (r) => (
       <div>
-        <div className="font-medium text-white">{r.display_name || r.name}</div>
+        {r.url
+          ? <a href={r.url} target="_blank" rel="noreferrer" className="font-medium text-violet-300 hover:underline">{r.display_name || r.name}</a>
+          : <div className="font-medium text-white">{r.display_name || r.name}</div>
+        }
         {r.tagline && <div className="text-xs text-slate-500 truncate max-w-[200px]">{r.tagline}</div>}
       </div>
     ),

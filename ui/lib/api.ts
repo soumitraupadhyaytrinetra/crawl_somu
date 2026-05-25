@@ -28,9 +28,10 @@ export async function fetchInfluencers(region?: Region): Promise<Influencer[]> {
   return res.json()
 }
 
-export async function fetchEvents(region?: Region): Promise<EventRow[]> {
+export async function fetchEvents(region?: Region, upcomingOnly: boolean = true): Promise<EventRow[]> {
   const p = new URLSearchParams()
   if (region && region !== 'all') p.set('region', region)
+  if (!upcomingOnly) p.set('upcoming_only', 'false')
   const res = await fetch(`${BASE}/api/events?${p}`, { cache: 'no-store' })
   if (!res.ok) throw new Error(`Events fetch failed: ${res.status}`)
   return res.json()

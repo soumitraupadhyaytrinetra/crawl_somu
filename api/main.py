@@ -78,8 +78,8 @@ async def get_influencers(region: Optional[str] = None):
 
 
 @app.get("/api/events")
-async def get_events(region: Optional[str] = None):
-    rows = await _db_instance.fetch_all_events(upcoming_only=True)
+async def get_events(region: Optional[str] = None, upcoming_only: bool = True):
+    rows = await _db_instance.fetch_all_events(upcoming_only=upcoming_only)
     if region:
         rows = [r for r in rows if r.get("region") == region]
     return rows

@@ -121,6 +121,12 @@ async def run_all(target: str | None = None, skip_competitors: bool = False,
             competitors = [c for c in competitors if c["name"] == target]
             if not competitors:
                 logger.error("Competitor %r not found in config", target)
+        else:
+            from scrapers.discovery import discover_competitors, _domain
+            existing_domains = {_domain(c["url"]) for c in competitors if c.get("url")}
+            discovered = await discover_competitors(existing_domains)
+            logger.info("Adding %d discovered competitors to %d from config", len(discovered), len(competitors))
+            competitors = competitors + discovered
         if max_sources:
             competitors = competitors[:max_sources]
 
@@ -203,6 +209,12 @@ async def run_all(target: str | None = None, skip_competitors: bool = False,
             logger.info("Topic scrape '%s': %d sources", topic_events, len(event_sources))
         else:
             event_sources = load_event_sources()
+            from scrapers.discovery import discover_event_sources, _domain
+            existing_evt_domains = {_domain(e["url"]) for e in event_sources if e.get("url")}
+            discovered_evt = await discover_event_sources()
+            new_evt = [e for e in discovered_evt if _domain(e["url"]) not in existing_evt_domains]
+            logger.info("Adding %d discovered event sources to %d from config", len(new_evt), len(event_sources))
+            event_sources = event_sources + new_evt
             if max_sources:
                 event_sources = event_sources[:max_sources]
         if event_sources:

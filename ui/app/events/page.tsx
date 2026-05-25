@@ -10,7 +10,9 @@ const COLUMNS: Column<EventRow>[] = [
   {
     key: 'name',
     label: 'Event',
-    render: (r) => <span className="font-medium text-white">{r.name}</span>,
+    render: (r) => r.website
+      ? <a href={r.website} target="_blank" rel="noreferrer" className="font-medium text-violet-300 hover:underline">{r.name}</a>
+      : <span className="font-medium text-white">{r.name}</span>,
   },
   {
     key: 'start_date',
@@ -37,17 +39,19 @@ export default function EventsPage() {
   const [data, setData] = useState<EventRow[]>([])
   const [region, setRegion] = useState<Region>('all')
   const [search, setSearch] = useState('')
+  const [showPast, setShowPast] = useState(false)
   const [topicState, setTopicState] = useState<'idle' | 'running' | 'done' | 'error'>('idle')
   const [topicMsg, setTopicMsg] = useState('')
   const pollRef = useRef<ReturnType<typeof setInterval> | null>(null)
 
   const load = () => {
-    fetchEvents(region).then(setData).catch(console.error)
+    fetchEvents(region, !showPast).then(setData).catch(console.error)
   }
 
-  useEffect(() => { load() }, [region])
+  useEffect(() => { load() }, [region, showPast])
   useEffect(() => () => { if (pollRef.current) clearInterval(pollRef.current) }, [])
 
+  const today = new Date().toISOString().slice(0, 10)
   const filtered = search.trim()
     ? data.filter(e => {
         const q = search.toLowerCase()
@@ -96,6 +100,9 @@ export default function EventsPage() {
     }
   }
 
+  const upcomingCount = data.filter(e => !e.start_date || e.start_date >= today).length
+  const pastCount = data.filter(e => e.start_date && e.start_date < today).length
+
   const topicBtnClass = {
     idle: 'bg-violet-600 hover:bg-violet-700',
     running: 'bg-slate-600 cursor-not-allowed',
@@ -108,12 +115,27 @@ export default function EventsPage() {
       <div className="flex items-center justify-between mb-6">
         <div>
           <h1 className="text-2xl font-bold">Events</h1>
-          <p className="text-slate-400 text-sm mt-1">{filtered.length} upcoming events</p>
+          <p className="text-slate-400 text-sm mt-1">
+            {filtered.length} {showPast ? 'total' : 'upcoming'} events
+            {showPast && pastCount > 0 && <span className="text-slate-600 ml-2">({pastCount} past)</span>}
+          </p>
         </div>
-        <ScrapeButton section="events" onDone={load} />
+        <div className="flex items-center gap-3">
+          <button
+            onClick={() => setShowPast(p => !p)}
+            className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
+              showPast
+                ? 'bg-slate-700 border-slate-500 text-white'
+                : 'bg-transparent border-slate-700 text-slate-400 hover:text-slate-200'
+            }`}
+          >
+            {showPast ? 'Showing all' : 'Show past'}
+          </button>
+          <ScrapeButton section="events" onDone={load} />
+        </div>
       </div>
 
-      <div className="flex items-center gap-3 mb-5">
+      <div className="flex items-center gap-3 mb-5 flex-wrap">
         <RegionFilter value={region} onChange={setRegion} />
         <div className="flex items-center gap-2 ml-auto">
           <input
